@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::any('adminer', '\Miroc\LaravelAdminer\AdminerController@index');
+Route::any('adminer', '\Miroc\LaravelAdminer\AdminerAutologinController@index');
