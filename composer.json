@@ -9,6 +9,7 @@
         "fideloper/proxy": "~4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
+        "leung/laravel-adminer": "^2.1",
         "miroc/laravel-adminer": "^4.3"
     },
     "require-dev": {

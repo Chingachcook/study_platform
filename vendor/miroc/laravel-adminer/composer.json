@@ -1,0 +1,22 @@
+{
+    "name": "miroc/laravel-adminer",
+    "description": "Adminer (by Jakub Vrana) wrapper for Laravel 5",
+    "keywords": ["adminer", "laravel5", "database", "management"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Miroslav Svitok",
+            "email": "mirosvitok@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Miroc\\LaravelAdminer\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
