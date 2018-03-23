@@ -49,5 +49,60 @@
             </div>
         </div>
     </div>
+    <div class="login-form">
+        <div class="home">
+            <div class="item">
+                <div class="content">
+                    <form method="POST" action="{{ route('login') }}" class="form-horizontal">
+                        @csrf
+                        <div class="logo">
+                            <h1>A</h1>
+                        </div>
+                        <div class="input-group lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user-circle"></i>
+                                </span>
+                            </div>
+                            <input id="email" type="email"
+                                   class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                   name="email" placeholder="Логин" aria-label="email"
+                                   aria-describedby="basic-addon1" value="{{ old('email') }}" required
+                                   autofocus>
+                        </div>
+                        <div class="input-group lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </div>
+                            <input id="password" type="password"
+                                   class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                   placeholder="Пароль" aria-label="Password"
+                                   aria-describedby="basic-addon1" name="password" required>
+
+                        </div>
+                        <div class="input-group mb-2 lg">
+                            @if ($errors->has('email'))
+                                <?php $style="display: inline-block;"?>
+                                <span class="invalid-feedback" style="<?php echo $style?>">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                            @endif
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" style="<?php echo $style?>">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-danger btn-block btn-padding">Войти</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

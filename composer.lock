@@ -4,48 +4,121 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "45ae826f9c73f58992232931f50ce45f",
+    "content-hash": "ddafba5896518c697eed2a3a053f3b5e",
     "packages": [
         {
-            "name": "ckeditor/ckeditor",
-            "version": "4.9.0",
+            "name": "appzcoder/crud-generator",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                "reference": "a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27"
+                "url": "https://github.com/appzcoder/crud-generator.git",
+                "reference": "33de6838a7abd73c3905a7ca0e7bfbee195dfe3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27",
-                "reference": "a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27",
+                "url": "https://api.github.com/repos/appzcoder/crud-generator/zipball/33de6838a7abd73c3905a7ca0e7bfbee195dfe3e",
+                "reference": "33de6838a7abd73c3905a7ca0e7bfbee195dfe3e",
                 "shasum": ""
             },
+            "require": {
+                "illuminate/support": "^5.1",
+                "laravelcollective/html": "^5.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.6",
+                "orchestra/testbench": "^3.3",
+                "phpunit/phpunit": "^5.7"
+            },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Appzcoder\\CrudGenerator\\CrudGeneratorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Appzcoder\\CrudGenerator\\": "src/"
+                },
+                "classmap": [
+                    "tests"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0+",
-                "LGPL-2.1+",
-                "MPL-1.1+"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "CKSource",
-                    "homepage": "http://cksource.com"
+                    "name": "Sohel Amin",
+                    "email": "sohelamincse@gmail.com",
+                    "homepage": "http://www.appzcoder.com"
                 }
             ],
-            "description": "JavaScript WYSIWYG web text editor.",
-            "homepage": "http://ckeditor.com",
+            "description": "Laravel CRUD Generator",
             "keywords": [
-                "CKEditor",
-                "editor",
-                "fckeditor",
-                "html",
-                "javascript",
-                "richtext",
-                "text",
-                "wysiwyg"
+                "API generator",
+                "crud",
+                "crud generator",
+                "laravel",
+                "laravel crud generator"
             ],
-            "time": "2018-03-15T07:19:37+00:00"
+            "time": "2018-03-04T16:42:02+00:00"
+        },
+        {
+            "name": "appzcoder/laravel-admin",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appzcoder/laravel-admin.git",
+                "reference": "43bb8f97d0557ce98f4efa4a95f95319b64802ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appzcoder/laravel-admin/zipball/43bb8f97d0557ce98f4efa4a95f95319b64802ae",
+                "reference": "43bb8f97d0557ce98f4efa4a95f95319b64802ae",
+                "shasum": ""
+            },
+            "require": {
+                "appzcoder/crud-generator": "^3.0",
+                "illuminate/support": "^5.1",
+                "laravelcollective/html": "~5.1",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Appzcoder\\LaravelAdmin\\LaravelAdminServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Appzcoder\\LaravelAdmin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sohel Amin",
+                    "email": "sohelamincse@gmail.com",
+                    "homepage": "http://www.appzcoder.com"
+                }
+            ],
+            "description": "Laravel Admin Panel",
+            "keywords": [
+                "admin",
+                "laravel",
+                "laravel admin",
+                "laravel admin panel"
+            ],
+            "time": "2018-03-06T18:16:26+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -408,59 +481,6 @@
             "time": "2018-02-07T20:20:57+00:00"
         },
         {
-            "name": "frozennode/administrator",
-            "version": "v5.0.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FrozenNode/Laravel-Administrator.git",
-                "reference": "f350c91d2c1b89754f882fbcd033bb5e0872652b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FrozenNode/Laravel-Administrator/zipball/f350c91d2c1b89754f882fbcd033bb5e0872652b",
-                "reference": "f350c91d2c1b89754f882fbcd033bb5e0872652b",
-                "shasum": ""
-            },
-            "require": {
-                "ckeditor/ckeditor": "4.*",
-                "laravel/framework": "5.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/controllers"
-                ],
-                "psr-0": {
-                    "Frozennode\\Administrator": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jan Hartigan",
-                    "email": "jan@frozennode.com"
-                }
-            ],
-            "description": "A database interface package for Laravel",
-            "homepage": "http://administrator.frozennode.com",
-            "keywords": [
-                "admin",
-                "administrator",
-                "cms",
-                "database",
-                "laravel",
-                "laravel-administrator"
-            ],
-            "time": "2016-06-23T05:52:04+00:00"
-        },
-        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -747,6 +767,74 @@
                 "psysh"
             ],
             "time": "2018-03-06T17:34:36+00:00"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "41cd9291a69bd24f2184e504be041348a87308a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/41cd9291a69bd24f2184e504be041348a87308a8",
+                "reference": "41cd9291a69bd24f2184e504be041348a87308a8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.6.*",
+                "illuminate/routing": "5.6.*",
+                "illuminate/session": "5.6.*",
+                "illuminate/support": "5.6.*",
+                "illuminate/view": "5.6.*",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "illuminate/database": "5.6.*",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~5.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.6-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "time": "2018-02-12T14:19:42+00:00"
         },
         {
             "name": "league/flysystem",
@@ -2406,6 +2494,47 @@
     ],
     "packages-dev": [
         {
+            "name": "ckeditor/ckeditor",
+            "version": "4.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ckeditor/ckeditor-releases.git",
+                "reference": "a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27",
+                "reference": "a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+",
+                "LGPL-2.1+",
+                "MPL-1.1+"
+            ],
+            "authors": [
+                {
+                    "name": "CKSource",
+                    "homepage": "http://cksource.com"
+                }
+            ],
+            "description": "JavaScript WYSIWYG web text editor.",
+            "homepage": "http://ckeditor.com",
+            "keywords": [
+                "CKEditor",
+                "editor",
+                "fckeditor",
+                "html",
+                "javascript",
+                "richtext",
+                "text",
+                "wysiwyg"
+            ],
+            "time": "2018-03-15T07:19:37+00:00"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.1.0",
             "source": {
@@ -2519,6 +2648,59 @@
                 "whoops"
             ],
             "time": "2017-11-23T18:22:44+00:00"
+        },
+        {
+            "name": "frozennode/administrator",
+            "version": "v5.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FrozenNode/Laravel-Administrator.git",
+                "reference": "f350c91d2c1b89754f882fbcd033bb5e0872652b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FrozenNode/Laravel-Administrator/zipball/f350c91d2c1b89754f882fbcd033bb5e0872652b",
+                "reference": "f350c91d2c1b89754f882fbcd033bb5e0872652b",
+                "shasum": ""
+            },
+            "require": {
+                "ckeditor/ckeditor": "4.*",
+                "laravel/framework": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/controllers"
+                ],
+                "psr-0": {
+                    "Frozennode\\Administrator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Hartigan",
+                    "email": "jan@frozennode.com"
+                }
+            ],
+            "description": "A database interface package for Laravel",
+            "homepage": "http://administrator.frozennode.com",
+            "keywords": [
+                "admin",
+                "administrator",
+                "cms",
+                "database",
+                "laravel",
+                "laravel-administrator"
+            ],
+            "time": "2016-06-23T05:52:04+00:00"
         },
         {
             "name": "fzaninotto/faker",
