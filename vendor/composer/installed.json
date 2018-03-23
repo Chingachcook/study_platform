@@ -1,5 +1,48 @@
 [
     {
+        "name": "ckeditor/ckeditor",
+        "version": "4.9.0",
+        "version_normalized": "4.9.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ckeditor/ckeditor-releases.git",
+            "reference": "a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27",
+            "reference": "a8497c4d9c8b8b559ac1e2fb99b397fd2167ae27",
+            "shasum": ""
+        },
+        "time": "2018-03-15T07:19:37+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+",
+            "LGPL-2.1+",
+            "MPL-1.1+"
+        ],
+        "authors": [
+            {
+                "name": "CKSource",
+                "homepage": "http://cksource.com"
+            }
+        ],
+        "description": "JavaScript WYSIWYG web text editor.",
+        "homepage": "http://ckeditor.com",
+        "keywords": [
+            "CKEditor",
+            "editor",
+            "fckeditor",
+            "html",
+            "javascript",
+            "richtext",
+            "text",
+            "wysiwyg"
+        ]
+    },
+    {
         "name": "dnoegel/php-xdg-base-dir",
         "version": "0.1",
         "version_normalized": "0.1.0.0",
@@ -490,6 +533,61 @@
             "library",
             "throwable",
             "whoops"
+        ]
+    },
+    {
+        "name": "frozennode/administrator",
+        "version": "v5.0.12",
+        "version_normalized": "5.0.12.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/FrozenNode/Laravel-Administrator.git",
+            "reference": "f350c91d2c1b89754f882fbcd033bb5e0872652b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/FrozenNode/Laravel-Administrator/zipball/f350c91d2c1b89754f882fbcd033bb5e0872652b",
+            "reference": "f350c91d2c1b89754f882fbcd033bb5e0872652b",
+            "shasum": ""
+        },
+        "require": {
+            "ckeditor/ckeditor": "4.*",
+            "laravel/framework": "5.*",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9"
+        },
+        "time": "2016-06-23T05:52:04+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/controllers"
+            ],
+            "psr-0": {
+                "Frozennode\\Administrator": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jan Hartigan",
+                "email": "jan@frozennode.com"
+            }
+        ],
+        "description": "A database interface package for Laravel",
+        "homepage": "http://administrator.frozennode.com",
+        "keywords": [
+            "admin",
+            "administrator",
+            "cms",
+            "database",
+            "laravel",
+            "laravel-administrator"
         ]
     },
     {
