@@ -35,8 +35,16 @@ Route::any('adminer', '\Miroc\LaravelAdminer\AdminerAutologinController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
-Route::get('admin', 'Admin\AdminController@index');
+Route::prefix('admin')->group(function () {
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+});
+
+//Route::get('admin', 'Admin\AdminController@index');
 Route::resource('admin/roles', 'Admin\RolesController');
 Route::resource('admin/modules', 'Admin\ModulesController');
 Route::resource('admin/lessons', 'Admin\LessonsController');
