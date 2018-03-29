@@ -37,13 +37,16 @@ class DocumentsController extends Controller
     {
         $this->validate($request, ['title' => 'required']);
 
-        $document = Document::create($request->all());
-        //$module->permissions()->detach();
 
-        //if ($request->has('permissions')) {
-        //   foreach ($request->permissions as $permission_name) {
-        // $permission = Permission::whereName($permission_name)->first();
-        //$module->givePermissionTo($permission);
+        $docName = $request->file('docx')->getClientOriginalName();
+        $path = base_path() . '/resources/assets/documents/';
+        $request->file('docx')->move(
+            $path, $docName
+        );
+
+        $data = $request->all();
+        $data['document_path'] = $path . $docName;
+        $document = Document::create($data);
 
         return redirect('admin/documents')->with('flash_message', 'Role added!');
     }

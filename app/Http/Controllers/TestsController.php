@@ -35,15 +35,18 @@ class TestsController extends Controller
     {
         $this->validate($request, ['title' => 'required']);
 
-        $test = Test::create($request->all());
-        //$module->permissions()->detach();
 
-        //if ($request->has('permissions')) {
-        //   foreach ($request->permissions as $permission_name) {
-        // $permission = Permission::whereName($permission_name)->first();
-        //$module->givePermissionTo($permission);
+        $testName = $request->file('test')->getClientOriginalName();
+        $path = base_path() . '/resources/assets/tests/';
+        $request->file('test')->move(
+            $path, $testName
+        );
 
-        return redirect('admin/tests')->with('flash_message', 'Role added!');
+        $data = $request->all();
+        $data['test_path'] = $path . $testName;
+        $document = Test::create($data);
+
+        return redirect('admin/tests')->with('flash_message', 'Test added!');
     }
 
     /**

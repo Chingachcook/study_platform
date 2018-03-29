@@ -21,7 +21,7 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => '/admin/tests', 'class' => 'form-horizontal']) !!}
+                        {!! Form::open(['url' => '/admin/tests', 'class' => 'form-horizontal','files' => 'true']) !!}
 
                         @include ('admin.tests.form')
 

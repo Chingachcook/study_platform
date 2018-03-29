@@ -29,15 +29,15 @@ class LessonsController extends Controller
     {
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
 
-        $module_id = 1;
-        return view('admin.lessons.create',compact('module_id'));
+        return view('admin.lessons.create');
     }
 
     public function store(Request $request)
     {
         $this->validate($request, ['title' => 'required']);
 
-        $lesson = Lesson::create($request->all());
+        $data = $request->all();
+        $lesson = Lesson::create($data);
         //$module->permissions()->detach();
 
         //if ($request->has('permissions')) {

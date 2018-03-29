@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    protected $fillable = ['title', 'description','module_id'];
+    protected $fillable = ['id','title', 'description','module_id'];
 }

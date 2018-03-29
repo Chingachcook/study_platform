@@ -6,9 +6,9 @@
     </div>
 </div>
 <div class="form-group{{ $errors->has('document_path') ? ' has-error' : ''}}">
-    {!! Form::label('document_path', 'Описание: ', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('document_path', null, ['class' => 'form-control']) !!}
+        {!! Form::label('document_path', 'Document: ', ['class' => 'col-md-4 control-label']) !!}
+        {!! Form::file('docx', null) !!}
         {!! $errors->first('document_path', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -19,6 +19,7 @@
         {!! $errors->first('lesson_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">

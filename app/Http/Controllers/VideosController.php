@@ -34,16 +34,9 @@ class VideosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['title' => 'required']);
+        $document = Test::create($request->all());
 
-        $video = Video::create($request->all());
-        //$module->permissions()->detach();
-
-        //if ($request->has('permissions')) {
-        //   foreach ($request->permissions as $permission_name) {
-        // $permission = Permission::whereName($permission_name)->first();
-        //$module->givePermissionTo($permission);
-
-        return redirect('admin/videos')->with('flash_message', 'Role added!');
+        return redirect('admin/videos')->with('flash_message', 'Video added!');
     }
 
     /**

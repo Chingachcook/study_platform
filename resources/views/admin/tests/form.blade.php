@@ -5,6 +5,13 @@
         {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group{{ $errors->has('test_path') ? ' has-error' : ''}}">
+    <div class="col-md-6">
+        {!! Form::label('test_path', 'Test: ', ['class' => 'col-md-4 control-label']) !!}
+        {!! Form::file('test', null) !!}
+        {!! $errors->first('test_path', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 <div class="form-group{{ $errors->has('lesson_id') ? ' has-error' : ''}}">
     {!! Form::label('lesson_id', 'Lesson: ', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">

@@ -60,7 +60,7 @@ class ModulesController extends Controller
      *
      * @return void
      */
-    public function show($id_module)
+    public function show($id)
     {
         //$module = Module::findOrFail($id);
         //$lesson = Lesson::findOrFail(1);
@@ -77,11 +77,11 @@ class ModulesController extends Controller
             $lessons = Lesson::paginate($perPage);
         }
 
-
-        $mod = Module::find($id_module);
+        $module = Module::findOrFail($id);
+        $mod = Module::find($id);
         $lessons = $mod->lessons_child;
 
-        return view('admin.lessons.index', compact('lessons'));
+        return view('admin.lessons.index', compact('lessons','module'));
 
     }
 
@@ -97,7 +97,7 @@ class ModulesController extends Controller
         $module = Module::findOrFail($id);
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
 
-        return view('admin.modules.edit');
+        return view('admin.modules.edit',compact('module'));
     }
 
     /**
@@ -135,7 +135,7 @@ class ModulesController extends Controller
      */
     public function destroy($id)
     {
-        Role::destroy($id);
+        Module::destroy($id);
 
         return redirect('admin/modules')->with('flash_message', 'Role deleted!');
     }
