@@ -73,7 +73,7 @@
                 <form method="POST" action="{{ route('login') }}" class="form-horizontal">
                     @csrf
                     <div class="logo">
-                        <h1>A</h1>
+                        <h1>U</h1>
                     </div>
                     <div class="input-group lg">
                         <div class="input-group-prepend">
@@ -108,8 +108,8 @@
                         @endif
                         @if ($errors->has('password'))
                             <span class="invalid-feedback" style="<?php echo $style?>">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
                         @endif
                     </div>
 
