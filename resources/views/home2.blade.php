@@ -69,67 +69,18 @@
         <h1>Модули для обучения</h1>
         <br>
         <div class="row d-flex align-items-stretch">
+            @foreach($modules as $item)
             <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                 <div class="card" style="width: 20rem;">
                     <div class="card-body">
-                        <h4 class="card-title">Модуль 1</h4>
-                        <h5 class="card-subtitle mb-2 text-muted">Card subtitle</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list') }}" role="button">Посмотреть</a>
+                        <h4 class="card-title">Модуль {{ $item->id }}</h4>
+                        <h5 class="card-subtitle mb-2 text-muted">{{ $item->title }}</h5>
+                        <p class="card-text">{{ $item->description }}</p>
+                        <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list/'.$item->id) }}" role="button">Посмотреть</a>
                     </div> 
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h4 class="card-title">Модуль 2</h4>
-                        <h5 class="card-subtitle mb-2 text-muted">Card subtitle</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list') }}" role="button">Посмотреть</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h4 class="card-title">Модуль 3</h4>
-                        <h5 class="card-subtitle mb-2 text-muted">Card subtitle</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list') }}" role="button">Посмотреть</a>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h4 class="card-title">Модуль 4</h4>
-                        <h5 class="card-subtitle mb-2 text-muted">Card subtitle</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list') }}" role="button">Посмотреть</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h4 class="card-title">Модуль 5</h4>
-                        <h5 class="card-subtitle mb-2 text-muted">Card subtitle</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list') }}" role="button">Посмотреть</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h4 class="card-title">Модуль 6</h4>
-                        <h5 class="card-subtitle mb-2 text-muted">Card subtitle</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list') }}" role="button">Посмотреть</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <br>
     </div>

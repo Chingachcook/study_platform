@@ -55,6 +55,15 @@ class CreateModulesLessonsTable extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons');
             $table->timestamps();
         });
+
+        Schema::create('tests_for_users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('test_admin_id');
+            $table->integer('result');
+            $table->integer('user_id');
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -69,5 +78,7 @@ class CreateModulesLessonsTable extends Migration
         Schema::dropIfExists('documents');
         Schema::dropIfExists('videos');
         Schema::dropIfExists('tests');
+        Schema::dropIfExists('tests_for_users');
+
     }
 }

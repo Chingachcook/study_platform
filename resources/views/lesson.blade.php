@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
 
     <!-- Useful meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -68,15 +68,15 @@
 
 <section class="lesson">
     <div class="container">
-        <h1>Урок</h1>
+        <h1>Урок {{$lesson->id}}</h1>
         <br>
         <div class="row d-flex">
             <div class="col-lg-3 col-md-12 col-sm-12 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
                     <img src="..." alt="..." class="img-thumbnail">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title">{{$lesson->title}}</h5>
+                        <p class="card-text">{{$lesson->description}}</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 <span>&nbsp;&nbsp;&nbsp;</span>
                 <a class="btn btn-info btn-block align-self-center btn-lesson" href="video.html">Video</a>
                 <span>&nbsp;&nbsp;&nbsp;</span>
-                <a class="btn btn-warning btn-block align-self-center btn-lesson" href="test.blade.php">Test</a>
+                <a class="btn btn-warning btn-block align-self-center btn-lesson" href="{{ url('/test/' . $lesson->id) }}">Test</a>
             </div>
         </div>
         <br>

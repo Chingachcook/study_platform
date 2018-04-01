@@ -6,6 +6,7 @@ use App\Lessons;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Lesson;
+use App\Module;
 use App\Permission;
 
 class LessonsController extends Controller
@@ -103,17 +104,28 @@ class LessonsController extends Controller
         return redirect('admin/lessons')->with('flash_message', 'Role updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     *
-     * @return void
-     */
     public function destroy($id)
     {
         Role::destroy($id);
 
         return redirect('admin/lessons')->with('flash_message', 'Role deleted!');
     }
+
+    //Для User
+    public function lessons_list_for_user($id)
+    {
+        $mod = Module::find($id);
+        $lessons = $mod->lessons_child;
+
+        return view('lessons_list', compact('lessons'));
+    }
+
+    public function lesson_for_user($id)
+    {
+        $lesson = Lesson::find($id);
+
+        return view('lesson', compact('lesson'));
+    }
+
+
 }

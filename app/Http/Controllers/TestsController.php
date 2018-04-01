@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lesson;
 use Illuminate\Http\Request;
 use App\Test;
 
@@ -116,5 +117,21 @@ class TestsController extends Controller
         Test::destroy($id);
 
         return redirect('admin/tests')->with('flash_message', 'Role deleted!');
+    }
+
+
+    //Для User
+    public function test_for_user($id)
+    {
+        $test = Test::find(1)->test_path;
+        //$content=file_get_contents($test);
+        $t = file_get_contents($test);
+        $get  = mb_detect_encoding($t, array('utf-8', 'cp1251'));
+        echo iconv($get,'UTF-8',$t);
+
+        //$less = Lesson::find($id);
+        //$tests = $less->tests_child;
+
+        return view('test', compact('test'));
     }
 }

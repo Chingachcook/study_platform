@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
 
     <!-- Useful meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -84,30 +84,16 @@
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-12 d-flex justify-content-center">
                     <div class="list-group">
-                        <a href="lesson.blade.php" class="list-group-item list-group-item-action flex-column align-items-start active">
+                        @foreach($lessons as $item)
+                        <a href="{{ url('/lesson/'.$item->id) }}" class="list-group-item list-group-item-action flex-column align-items-start active">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
+                                <h5 class="mb-1">Урок {{$item->id}}  </h5>
                                 <small>3 days ago</small>
                             </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small>Donec id elit non mi porta.</small>
+                            <p class="mb-1">{{$item->title}}</p>
+                            <small>{{$item->description}}</small>
                         </a>
-                        <a href="lesson.blade.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                        </a>
-                        <a href="lesson.blade.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                        </a>
+                         @endforeach
                     </div>
                 </div>
             </div>

@@ -19,14 +19,27 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/lessons_list', 'LessonListController@index');
-Route::get('/statistics', 'StatisticsController@index');
-Route::get('/statistics_lesson', 'StatisticsLessonController@index');
-Route::get('/statistics_test', 'StatisticsTestController@index');
-Route::get('/test', 'TestController@index');
+//Отображения для user
+
+Route::get('/lessons_list/{id}', 'Admin\LessonsController@lessons_list_for_user');
+Route::get('/lesson/{id}', 'Admin\LessonsController@lesson_for_user');
+Route::get('/test/{id}', 'TestsController@test_for_user');
+
+Route::get('/statistics', function () {
+        return view('statistics');
+});
+Route::get('/statistics_lesson', function () {
+    return view('statistics_lesson');
+});
+Route::get('/statistics_test', function () {
+    return view('statistics_test');
+});
 
 Route::get('/home2', function () {
-    return view('home2');
+    if (Auth::check())
+    {
+        return view('home2');
+    }
 });
 
 Route::any('adminer', '\Miroc\LaravelAdminer\AdminerController@index');
