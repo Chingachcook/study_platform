@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/lessons_list/{id}', 'Admin\LessonsController@lessons_list_for_user');
 Route::get('/lesson/{id}', 'Admin\LessonsController@lesson_for_user');
 Route::get('/test/{id}', 'TestsController@test_for_user');
+Route::get('/video/{id}', 'VideosController@video_for_user');
+Route::get('/document/{id}', 'DocumentsController@docx_for_user');
 
 Route::get('/statistics', function () {
         return view('statistics');
