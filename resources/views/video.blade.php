@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
+=======
+    <link rel="stylesheet" href="assets/css/style.min.css">
+>>>>>>> origin/master
 
     <!-- Useful meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -70,10 +74,17 @@
     <div class="container">
         <div class="form-group">
             <div class="embed-responsive embed-responsive-21by9">
+<<<<<<< HEAD
                 <iframe class="embed-responsive-item" src="{{$video->video_path}} " frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
         <button type="submit" class="btn btn-warning"><a href="{{ url('/lesson/'.$video->lesson_id) }}">Назад</a></button>
+=======
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/H4cG4tbc-xQ?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-warning">Назад</button>
+>>>>>>> origin/master
     </div>
 </section>
 
