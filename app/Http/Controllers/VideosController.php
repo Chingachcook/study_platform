@@ -34,7 +34,7 @@ class VideosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['title' => 'required']);
-        $document = Test::create($request->all());
+        $document = Video::create($request->all());
 
         return redirect('admin/videos')->with('flash_message', 'Video added!');
     }

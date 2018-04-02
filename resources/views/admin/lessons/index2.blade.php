@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Lessons</div>
+                    <div class="card-header">Урок</div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">

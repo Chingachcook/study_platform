@@ -7,15 +7,15 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">modules</div>
+                    <div class="card-header">Модули</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/modules/create') }}" class="btn btn-success btn-sm" title="Add New Module">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <a href="{{ url('/admin/modules/create') }}" class="btn btn-success btn-sm" title="Добавить Новый Модуль">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Добавить Модуль
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/modules', 'class' => 'form-inline my-2 my-lg-0 float-right', 'module' => 'search'])  !!}
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Search...">
+                            <input type="text" class="form-control" name="search" placeholder="Поиск...">
                             <span class="input-group-btn">
                                 <button class="btn btn-secondary" type="submit">
                                     <i class="fa fa-search"></i>
@@ -31,7 +31,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Наименование</th><th>Описание</th><th>Actions</th>
+                                        <th>ID</th><th>Наименование</th><th>Описание</th><th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,17 +40,17 @@
                                         <td>{{ $item->id }}</td>
                                         <td><a href="{{ url('/admin/modules', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->description }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/modules/' . $item->id) }}" title="View Module"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/modules/' . $item->id . '/edit') }}" title="Edit Module"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/modules/' . $item->id) }}" title="Посмотреть Модуль"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
+                                            <a href="{{ url('/admin/modules/' . $item->id . '/edit') }}" title="Изменить Модуль"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
                                             {!! Form::open([
                                                 'method' => 'DELETE',
                                                 'url' => ['/admin/modules', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> ', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-sm',
-                                                        'title' => 'Delete Module',
+                                                        'title' => 'Удалить Модуль',
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}

@@ -18,15 +18,17 @@
 <section class="lesson">
     <div class="container">
         <br>
+        <a href="{{ url('/admin/lessons') }}" class="btn btn-warning btn-sm" title="Назад к Урокам">
+            <i class="fa fa-home" aria-hidden="true"></i> Назад
+        </a>
+        <hr>
         <div class="row d-flex">
-            <div class="col-lg-3 col-md-12 col-sm-12 d-flex justify-content-center">
-            </div>
-            <div class="col-lg-9 col-md-12 col-sm-12 d-flex justify-content-center">
-                <a class="btn btn-danger btn-block align-self-center btn-lesson" href="{{ url('/admin/documents')}}">Document</a>
+            <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">
+                <a title="Добавить Документ" class="btn btn-danger btn-block align-self-center btn-lesson" href="{{ url('/admin/documents')}}">Документ</a>
                 <span>&nbsp;&nbsp;&nbsp;</span>
-                <a class="btn btn-info btn-block align-self-center btn-lesson" href="{{ url('/admin/videos')}}">Video</a>
+                <a title="Добавить Видео" class="btn btn-info btn-block align-self-center btn-lesson" href="{{ url('/admin/videos')}}">Видео</a>
                 <span>&nbsp;&nbsp;&nbsp;</span>
-                <a class="btn btn-warning btn-block align-self-center btn-lesson" href="{{ url('/admin/tests')}}">Test</a>
+                <a title="Добавить Тест" class="btn btn-warning btn-block align-self-center btn-lesson" href="{{ url('/admin/tests')}}">Тест</a>
             </div>
         </div>
         <br>

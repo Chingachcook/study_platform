@@ -1,7 +1,5 @@
-{"menus":[{"section":"User Manager",
-  "items":[{"title":"Users","url":"\/admin\/users"},
-    {"title":"Roles","url":"\/admin\/roles"},
-    {"title":"Module","url":"\/admin\/modules"},
-    {"title":"Permissions","url":"\/admin\/permissions"}]},
+{"menus":[{"section":"Управление",
+  "items":[{"title":"Пользователи","url":"\/admin\/users"},
+    {"title":"Модули","url":"\/admin\/modules"}]},
   {"section":"Tools","items":[{"title":"Generator","url":"\/admin\/generator"}]},
   {"section":"Modules","items":[]}]}
