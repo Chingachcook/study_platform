@@ -119,4 +119,14 @@ class DocumentsController extends Controller
 
         return redirect('admin/documents')->with('flash_message', 'Role deleted!');
     }
+
+    //Для User
+    public function docx_for_user($id)
+    {
+        $less = Lesson::find($id);
+        $documents = $less->docx_child;
+        $document = $documents[0]->document_path;
+        return view('document', compact("document"));
+    }
+
 }

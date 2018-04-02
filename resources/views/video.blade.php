@@ -22,7 +22,7 @@
             <a class="navbar-brand" href="index.html">
                 <img src="">Имя ученика</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
+                    aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -66,35 +66,19 @@
 </div>
 <br>
 
-<section class="lesson">
+<section class="test">
     <div class="container">
-        <h1>Урок {{$lesson->id}}</h1>
-        <br>
-        <div class="row d-flex">
-            <div class="col-lg-3 col-md-12 col-sm-12 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." alt="..." class="img-thumbnail">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$lesson->title}}</h5>
-                        <p class="card-text">{{$lesson->description}}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-9 col-md-12 col-sm-12 d-flex justify-content-center">
-                <a class="btn btn-danger btn-block align-self-center btn-lesson" href="{{ url('/document/' . $lesson->id) }}">Document</a>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                <a class="btn btn-info btn-block align-self-center btn-lesson" href="{{ url('/video/' . $lesson->id) }}">Video</a>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                <a class="btn btn-warning btn-block align-self-center btn-lesson" href="{{ url('/test/' . $lesson->id) }}">Test</a>
+        <div class="form-group">
+            <div class="embed-responsive embed-responsive-21by9">
+                <iframe class="embed-responsive-item" src="{{$video->video_path}} " frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
-        <br>
+        <button type="submit" class="btn btn-warning"><a href="{{ url('/lesson/'.$video->lesson_id) }}">Назад</a></button>
     </div>
 </section>
-        
+
 <!-- JS -->
-<script src="js/main.js"></script>
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>

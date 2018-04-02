@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lesson;
 use Illuminate\Http\Request;
 use App\Video;
 
@@ -34,7 +35,7 @@ class VideosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['title' => 'required']);
-        $document = Test::create($request->all());
+        $document = Video::create($request->all());
 
         return redirect('admin/videos')->with('flash_message', 'Video added!');
     }
@@ -106,5 +107,14 @@ class VideosController extends Controller
         Video::destroy($id);
 
         return redirect('admin/videos')->with('flash_message', 'Role deleted!');
+    }
+
+    //Для User
+    public function video_for_user($id)
+    {
+        $less = Lesson::find($id);
+        $videos = $less->videos_child;
+        $video = $videos[0]->video_path;
+        return view('video', compact("video"));
     }
 }
