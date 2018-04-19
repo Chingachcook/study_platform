@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $modules = Module::all();
-        return view('home2', compact('modules'));
+        $i = 1;
+        return view('home2', compact('modules','i'));
     }
 }

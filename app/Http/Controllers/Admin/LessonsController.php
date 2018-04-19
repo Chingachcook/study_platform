@@ -121,21 +121,7 @@ class LessonsController extends Controller
         return redirect('admin/lessons')->with('flash_message', 'Role deleted!');
     }
 
-    //Для User
-    public function lessons_list_for_user($id)
-    {
-        $mod = Module::find($id);
-        $lessons = $mod->lessons_child;
 
-        return view('lessons_list', compact('lessons'));
-    }
-
-    public function lesson_for_user($id)
-    {
-        $lesson = Lesson::find($id);
-
-        return view('lesson', compact('lesson'));
-    }
 
 
 }

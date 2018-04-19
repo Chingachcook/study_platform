@@ -194,6 +194,7 @@ class TestsController extends Controller
         }
         }
         $ok = ($res*100)/count($tests);
+        $not_ok =100-$ok;
         $id_user = Auth::id();
         $post = new TestsForUser;
         $post->test_admin_id = $id;
@@ -201,6 +202,7 @@ class TestsController extends Controller
         $post->result = $ok;
         $post->user_id = $id_user;
         $post->save();
+        return view('result_user', compact('ok','not_ok'));
     }
 
     public function statistics_module($id_module)
@@ -208,7 +210,8 @@ class TestsController extends Controller
         $id = Auth::id();
         $user = User::find($id);
         $results = $user->result_child;
-        return view('statistics_test', compact('results','id_module'));
+        $i=1;
+        return view('statistics_test', compact('results','id_module','i'));
     }
 
     public function statistics()

@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/statistics') }}">Статистика</a>
+                            <a class="nav-link" href="{{ url('/statistics_modules') }}">Статистика</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/settings') }}">Настройки</a>

@@ -21,8 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Отображения для user
 
-Route::get('/lessons_list/{id}', 'Admin\LessonsController@lessons_list_for_user');
-Route::get('/lesson/{id}', 'Admin\LessonsController@lesson_for_user');
+Route::get('/lessons_list/{id}', 'UsersController@lessons_list_for_user');
+Route::get('/lesson/{id}', 'UsersController@lesson_for_user');
 Route::get('/test/{id}', 'TestsController@test_for_user');
 Route::get('/video/{id}', 'VideosController@video_for_user');
 Route::get('/document/{id}', 'DocumentsController@docx_for_user');
@@ -41,12 +41,7 @@ Route::get('/statistics_test', function () {
     return view('statistics_test');
 });
 
-Route::get('/home2', function () {
-    if (Auth::check())
-    {
-        return view('home2');
-    }
-});
+
 
 Route::any('adminer', '\Miroc\LaravelAdminer\AdminerController@index');
 Route::any('adminer', '\Miroc\LaravelAdminer\AdminerAutologinController@index');
