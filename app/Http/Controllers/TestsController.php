@@ -123,9 +123,9 @@ class TestsController extends Controller
     public function edit($id)
     {
         $test = Test::findOrFail($id);
-        //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
+        $id = $test->lesson_id ;
 
-        return view('admin.tests.edit');
+        return view('admin.tests.edit',compact('test','id'));
     }
 
     /**
@@ -142,16 +142,15 @@ class TestsController extends Controller
 
         $test = Test::findOrFail($id);
         $test->update($request->all());
-        $test->permissions()->detach();
 
-        if ($request->has('permissions')) {
-            foreach ($request->permissions as $permission_name) {
-                $permission = Permission::whereName($permission_name)->first();
-                $test->givePermissionTo($permission);
-            }
-        }
+        $id = $test->lesson_id ;
 
-        return redirect('admin/tests')->with('flash_message', 'Role updated!');
+        $less = Lesson::find($id);
+        $tests = $less->tests_child;
+
+        return view('admin.tests.index',compact('tests','id'))->with('flash_message', 'updated!');
+
+        //return redirect('admin/tests')->with('flash_message', 'Role updated!');
     }
 
     /**
@@ -165,7 +164,8 @@ class TestsController extends Controller
     {
         Test::destroy($id);
 
-        return redirect('admin/tests')->with('flash_message', 'Role deleted!');
+
+        return redirect('admin/modules')->with('flash_message', 'Role deleted!');
     }
 
 

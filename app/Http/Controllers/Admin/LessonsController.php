@@ -45,12 +45,7 @@ class LessonsController extends Controller
 
         $data = $request->all();
         $lesson = Lesson::create($data);
-        //$module->permissions()->detach();
 
-        //if ($request->has('permissions')) {
-        //   foreach ($request->permissions as $permission_name) {
-        // $permission = Permission::whereName($permission_name)->first();
-        //$module->givePermissionTo($permission);
         $module = $data['module_id'];
         $mod = Module::find($module);
         $lessons = $mod->lessons_child;
@@ -83,9 +78,8 @@ class LessonsController extends Controller
     public function edit($id)
     {
         $lesson = Lesson::findOrFail($id);
-        //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
-
-        return view('admin.lesson.edit');
+        $module_id = $lesson->module_id;
+        return view('admin.lessons.edit',compact('lesson','module_id'));
     }
 
     /**
@@ -100,25 +94,29 @@ class LessonsController extends Controller
     {
         $this->validate($request, ['title' => 'required']);
 
-        $lesson = Lesson::findOrFail($id);
-        $lesson->update($request->all());
-        $lesson->permissions()->detach();
+        $lessons = Lesson::findOrFail($id);
+        $lessons->update($request->all());
+        $module = $lessons->module_id;
+        $mod = Module::find($module);
+        $lessons = $mod->lessons_child;
 
-        if ($request->has('permissions')) {
-            foreach ($request->permissions as $permission_name) {
-                $permission = Permission::whereName($permission_name)->first();
-                $lesson->givePermissionTo($permission);
-            }
-        }
+        return view('admin.lessons',compact('module','lessons'))->with('flash_message', 'updated!');
 
-        return redirect('admin/lessons')->with('flash_message', 'Role updated!');
+        //return redirect('admin/lessons')->with('flash_message', 'Role updated!');
     }
 
     public function destroy($id)
     {
-        Role::destroy($id);
+        Lesson::destroy($id);
 
-        return redirect('admin/lessons')->with('flash_message', 'Role deleted!');
+        $lessons = Lesson::findOrFail($id);
+        $module = $lessons->module_id;
+        $mod = Module::find($module);
+        $lessons = $mod->lessons_child;
+
+        return view('admin.lessons',compact('module','lessons'))->with('flash_message', 'updated!');
+
+        //return redirect('admin/lessons')->with('flash_message', 'Role deleted!');
     }
 
 

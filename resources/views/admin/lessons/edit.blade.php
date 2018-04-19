@@ -27,7 +27,7 @@
                             'class' => 'form-horizontal'
                         ]) !!}
 
-                        @include ('admin.lessons.form', ['submitButtonText' => 'Update'])
+                        @include ('admin.lessons.form', ['some_data' => $module_id],['submitButtonText' => 'Update'])
 
                         {!! Form::close() !!}
 

@@ -54,9 +54,14 @@ class DocumentsController extends Controller
         $data['document_path'] = $path . $docName;*/
 
         $data = $request->all();
-        $document = Document::create($data);
+        Document::create($data);
+        $id = $data['lesson_id'];
+        $less = Lesson::find($id);
+        $documents = $less->docx_child;
 
-        return redirect('admin/documents')->with('flash_message', 'Role added!');
+        return view('admin.documents.index', compact('documents','id'));
+
+        //return redirect('admin/documents')->with('flash_message', 'Role added!');
     }
 
     /**
@@ -84,8 +89,10 @@ class DocumentsController extends Controller
     {
         $document = Document::findOrFail($id);
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
+        $id = $document->lesson_id ;
+        return view('admin.documents.edit',compact('document','id'));
 
-        return view('admin.documents.edit');
+        //return view('admin.documents.edit');
     }
 
     /**
@@ -102,16 +109,15 @@ class DocumentsController extends Controller
 
         $document = Document::findOrFail($id);
         $document->update($request->all());
-        $document->permissions()->detach();
 
-        if ($request->has('permissions')) {
-            foreach ($request->permissions as $permission_name) {
-                $permission = Permission::whereName($permission_name)->first();
-                $document->givePermissionTo($permission);
-            }
-        }
+        $id = $document->lesson_id ;
 
-        return redirect('admin/documents')->with('flash_message', 'Role updated!');
+        $less = Lesson::find($id);
+        $documents = $less->docx_child;
+
+        return view('admin.documents.index',compact('documents','id'))->with('flash_message', 'updated!');
+
+        //return redirect('admin/documents')->with('flash_message', 'Role updated!');
     }
 
     /**

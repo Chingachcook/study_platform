@@ -119,16 +119,8 @@ class ModulesController extends Controller
 
         $module = Module::findOrFail($id);
         $module->update($request->all());
-        $module->permissions()->detach();
 
-        if ($request->has('permissions')) {
-            foreach ($request->permissions as $permission_name) {
-                $permission = Permission::whereName($permission_name)->first();
-                $module->givePermissionTo($permission);
-            }
-        }
-
-        return redirect('admin/modules')->with('flash_message', 'Role updated!');
+        return redirect('admin/modules')->with('flash_message', 'updated!');
     }
 
     /**
@@ -142,7 +134,7 @@ class ModulesController extends Controller
     {
         Module::destroy($id);
 
-        return redirect('admin/modules')->with('flash_message', 'Role deleted!');
+        return redirect('admin/modules')->with('flash_message', 'deleted!');
     }
 
 

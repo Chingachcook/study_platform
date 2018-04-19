@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Edit Document</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/documents') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/'.$id.'/documents') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -27,7 +27,7 @@
                             'class' => 'form-horizontal'
                         ]) !!}
 
-                        @include ('admin.documents.form', ['submitButtonText' => 'Update'])
+                        @include ('admin.documents.form', ['id' => $id],['submitButtonText' => 'Update'])
 
                         {!! Form::close() !!}
 

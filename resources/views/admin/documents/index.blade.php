@@ -40,7 +40,6 @@
                                         <td>{{ $item->id }}</td>
                                         <td><a href="{{ url('/admin/documents', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->document_path }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/documents/' . $item->id) }}" title="View Document"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/documents/' . $item->id . '/edit') }}" title="Edit Document"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([
                                                 'method' => 'DELETE',

@@ -43,9 +43,17 @@ class VideosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['title' => 'required']);
-        $document = Video::create($request->all());
+        $data = $request->all();
+        Video::create($data);
 
-        return redirect('admin/videos')->with('flash_message', 'Video added!');
+        $id = $data['lesson_id'];
+
+        $less = Lesson::find($id);
+        $videos = $less->videos_child;
+
+        return view('admin.videos.index',compact('videos','id'))->with('flash_message', 'updated!');
+
+        //return redirect('admin/videos')->with('flash_message', 'Video added!');
     }
 
     /**
@@ -73,8 +81,8 @@ class VideosController extends Controller
     {
         $video = Video::findOrFail($id);
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
-
-        return view('admin.videos.edit');
+        $id = $video->lesson_id ;
+        return view('admin.videos.edit',compact('video','id'));
     }
 
     /**
@@ -91,16 +99,16 @@ class VideosController extends Controller
 
         $video = Video::findOrFail($id);
         $video->update($request->all());
-        $video->permissions()->detach();
 
-        if ($request->has('permissions')) {
-            foreach ($request->permissions as $permission_name) {
-                $permission = Permission::whereName($permission_name)->first();
-                $video->givePermissionTo($permission);
-            }
-        }
+        $id = $video->lesson_id ;
 
-        return redirect('admin/videos')->with('flash_message', 'Role updated!');
+        $less = Lesson::find($id);
+        $videos = $less->videos_child;
+
+
+        return view('admin.videos',compact('videos','id'))->with('flash_message', 'updated!');
+
+        //return redirect('admin/videos')->with('flash_message', 'Role updated!');
     }
 
     /**
@@ -114,7 +122,15 @@ class VideosController extends Controller
     {
         Video::destroy($id);
 
-        return redirect('admin/videos')->with('flash_message', 'Role deleted!');
+        $video = Video::findOrFail($id);
+        $id = $video->lesson_id ;
+
+        $less = Lesson::find($id);
+        $videos = $less->videos_child;
+
+        return view('admin.videos',compact('videos','id'))->with('flash_message', 'updated!');
+
+        //return redirect('admin/videos')->with('flash_message', 'Role deleted!');
     }
 
     //Для User

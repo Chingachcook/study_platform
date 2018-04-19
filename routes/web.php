@@ -31,18 +31,6 @@ Route::get('statistics_modules', 'TestsController@statistics');
 Route::get('statistics_module/{id}', 'TestsController@statistics_module');
 
 
-Route::get('/statistics', function () {
-        return view('statistics');
-});
-Route::get('/statistics_lesson', function () {
-    return view('statistics_lesson');
-});
-Route::get('/statistics_test', function () {
-    return view('statistics_test');
-});
-
-
-
 Route::any('adminer', '\Miroc\LaravelAdminer\AdminerController@index');
 Route::any('adminer', '\Miroc\LaravelAdminer\AdminerAutologinController@index');
 
