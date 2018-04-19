@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
@@ -58,11 +58,13 @@
     <br>
     <section class="module">
         <div class="container">
-            <h1>Ваша статистика по первому уроку первого модуля</h1>
+            <h1>Ваша статистика </h1>
             <br>
             <div id="myfirstchart" style="height: 250px;"></div>
         </div>
     </section>
+
+
 
     <script>
         new Morris.Line({
@@ -71,19 +73,23 @@
             // Chart data records -- each entry in this array corresponds to a point on
             // the chart.
             data: [
-                { year: '2008', value: 52 },
-                { year: '2009', value: 65 },
-                { year: '2010', value: 71 },
-                { year: '2011', value: 70 },
-                { year: '2012', value: 85 }
+                <?php
+                   foreach ($results as $item)
+                       if ($item->module_id_test==$id_module)
+                   echo ' { period: \''.$item->created_at.'\', value: '.$item->result.', number: '.$item->test_admin_id.'  },';
+                ?>
+
             ],
             // The name of the data record attribute that contains x-values.
-            xkey: 'year',
+            xkey: 'period',
             // A list of names of data record attributes that contain y-values.
-            ykeys: ['value'],
+            ykeys: ['value','number'],
             // Labels for the ykeys -- will be displayed when you hover over the
             // chart.
-            labels: ['Value']
+            xLabelFormat: function(period) {
+                return period.getDate()+'/'+(period.getMonth()+1)+'/'+period.getFullYear();
+            },
+            labels: ['Баллы','Урок']
         });
     </script>
     <!-- JS -->

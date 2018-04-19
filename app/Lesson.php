@@ -13,6 +13,10 @@ class Lesson extends Model
         return $this->hasMany('App\Test');
     }
 
+    public function questions_child()
+    {
+        return $this->hasMany('App\Question');
+    }
 
     public function videos_child()
     {

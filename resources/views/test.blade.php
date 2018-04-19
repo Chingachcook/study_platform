@@ -68,41 +68,27 @@
 
 <section class="test">
     <div class="container">
-        <form class="form-test">
+        <form class="form-test" method="post" name="form" action={{url('/result/'.$id)}}>
+            {{ csrf_field() }}
+            @foreach($tests as $item)
             <div class="form-group">
                 <div class="question">
-                    <p>
-                        <strong>Q1</strong>: Mary is English. She was born in London</p>
-                    <label>
-                        <input type="radio" name="one" value="a">Mary was born in England</label>
-                    <label>
-                        <input type="radio" name="one" value="b">Mary, who is English, was born in London</label>
-                    <label>
-                        <input type="radio" name="one" value="c">English Mary was born in London</label>
-                    <label>
-                        <input type="radio" name="one" value="d">London Mary is English born</label>
-                </div>
-                <div class="question">
-                    <p>
-                        <strong>Q2</strong>: Mary is English. She was born in London</p>
-                    <label>
-                        <input type="radio" name="two" value="a">Mary was born in England</label>
-                    <label>
-                        <input type="radio" name="two" value="b">Mary, who is English, was born in London</label>
-                    <label>
-                        <input type="radio" name="two" value="c">English Mary was born in London</label>
-                    <label>
-                        <input type="radio" name="two" value="d">London Mary is English born</label>
+                    <p><strong>Вопрос {{' '.$j++.': '}}</strong>{{ $item->title }}</p>
+                    @foreach($item->answer_child as $answer)
+                    <label><input type="checkbox" name="{{$answer->question_id}}" id="{{$answer->id}}" value="{{ $answer->right }}" >{{ ' '. $answer->title }}</label>
+                    @endforeach
                 </div>
             </div>
-            
-            <button type="submit" class="btn btn-warning">Submit</button>
+            @endforeach
+            <button type="submit" name="submit" value="push" class="btn btn-warning">Submit</button>
         </form>
         <img src="assets/img/right.png" alt="">
     </div>
 </section>
         
 <!-- JS -->
+
+
 <script src="js/main.js"></script>
 
 </body>

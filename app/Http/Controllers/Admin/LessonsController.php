@@ -28,14 +28,15 @@ class LessonsController extends Controller
             $lessons = Lesson::paginate($perPage);
         }
 
-        return view('admin.lessons.index', compact('lessons'));
+        return view('admin.lessons.index', compact('lessons','module'));
     }
 
-    public function create()
+    public function create($id)
     {
+        $id_example = $id;
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
 
-        return view('admin.lessons.create');
+        return view('admin.lessons.create',compact('id_example'));
     }
 
     public function store(Request $request)
@@ -50,8 +51,12 @@ class LessonsController extends Controller
         //   foreach ($request->permissions as $permission_name) {
         // $permission = Permission::whereName($permission_name)->first();
         //$module->givePermissionTo($permission);
+        $module = $data['module_id'];
+        $mod = Module::find($module);
+        $lessons = $mod->lessons_child;
+        //return redirect('admin/lessons',compact('module'))->with('flash_message', 'Role added!');
+        return view('admin.lessons.index',compact('module','lessons'));
 
-        return redirect('admin/lessons')->with('flash_message', 'Role added!');
     }
 
     /**
@@ -65,7 +70,7 @@ class LessonsController extends Controller
     {
         $lesson = Lesson::findOrFail($id);
 
-        return view('admin.lessons.index2');
+        return view('admin.lessons.index2', compact('id'));
     }
 
     /**

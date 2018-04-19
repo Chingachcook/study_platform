@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Lesson;
+use App\TestsForUser;
+use App\User;
 use Illuminate\Http\Request;
 use App\Test;
+use App\Question;
+use App\Module;
+use App\Answer;
+use App\Questions_Answers;
+use Illuminate\Support\Facades\Auth;
 
 class TestsController extends Controller
 {
@@ -24,30 +31,72 @@ class TestsController extends Controller
         return view('admin.tests.index', compact('tests'));
     }
 
-    public function create()
+    public function index2($id)
+    {
+        $less = Lesson::find($id);
+        $tests = $less->questions_child;
+
+        return view('admin.tests.index', compact('tests','id'));
+    }
+
+    public function create($id)
     {
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
 
-        $module_id = 1;
-        return view('admin.tests.create',compact('module_id'));
+
+        return view('admin.tests.create',compact('id'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, ['title' => 'required']);
-
-
+        /*
         $testName = $request->file('test')->getClientOriginalName();
         $path = base_path() . '/resources/assets/tests/';
         $request->file('test')->move(
             $path, $testName
         );
 
-        $data = $request->all();
         $data['test_path'] = $path . $testName;
         $document = Test::create($data);
+      */
+        $data = $request->all();
+        $post = new Question;
+        $post->title = $data['title'];
+        $post->lesson_id = $data['lesson_id'];
+        $post->save();
 
-        return redirect('admin/tests')->with('flash_message', 'Test added!');
+        $id_q = Question::all()->last()->id;
+
+        $post = new Answer;
+        $post->title = $data['answer1'];
+        if ($data['right']=='1') $post->right = true;
+        $post->question_id = $id_q;
+        $post->save();
+        $post = new Answer;
+        $post->title = $data['answer2'];
+        if ($data['right']=='2') $post->right = true;
+        $post->question_id = $id_q;
+        $post->save();
+        $post = new Answer;
+        $post->title = $data['answer3'];
+        if ($data['right']=='3') $post->right = true;
+        $post->question_id = $id_q;
+        $post->save();
+        $post = new Answer;
+        $post->title = $data['answer4'];
+        if ($data['right']=='4') $post->right = true;
+        $post->question_id = $id_q;
+        $post->save();
+
+        //return redirect('admin/tests')->with('flash_message', 'Test added!');
+        $id = $data['lesson_id'];
+        $less = Lesson::find($id);
+        $tests = $less->questions_child;
+
+        return view('admin.tests.index', compact('tests','id'));
+
+        //return redirect('admin/lessons',compact('module'))->with('flash_message', 'Role added!');
     }
 
     /**
@@ -124,6 +173,53 @@ class TestsController extends Controller
     public function test_for_user($id)
     {
         $less = Lesson::find($id);
+        $tests = $less->questions_child;
+
+        $j = 1;
+
+        return view('test', compact('tests','j','id'));
+    }
+
+    public function result($id)
+    {
+        $less = Lesson::find($id);
+        $tests = $less->questions_child;
+        $module_id = $less->module_id;;
+        $res = 0;
+        if (isset($_POST["submit"]))
+        {
+            foreach ($tests as $item)
+        {
+            if($_POST[$item->id]=='1')   $res++;
+        }
+        }
+        $ok = ($res*100)/count($tests);
+        $id_user = Auth::id();
+        $post = new TestsForUser;
+        $post->test_admin_id = $id;
+        $post->module_id_test = $module_id;
+        $post->result = $ok;
+        $post->user_id = $id_user;
+        $post->save();
+    }
+
+    public function statistics_module($id_module)
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        $results = $user->result_child;
+        return view('statistics_test', compact('results','id_module'));
+    }
+
+    public function statistics()
+    {
+        $modules = Module::all();
+        return view('statistics', compact('modules'));
+    }
+
+    public function test_txt($id)
+    {
+        $less = Lesson::find($id);
         $tests = $less->tests_child;
         $path = $tests[0]->test_path;
 
@@ -141,7 +237,7 @@ class TestsController extends Controller
                 if ($i%5==0) {$q_arr[] = iconv('windows-1251',"UTF-8//IGNORE",$string);}
                 if ($i%5==1) {$right_answr_arr[] = iconv('windows-1251',"UTF-8//IGNORE",$string);}
                 if ($i%5!=0 && $i%5!=1) {$answr_arr[] = iconv('windows-1251',"UTF-8//IGNORE",$string);}
-                    $i++;
+                $i++;
             }
             fclose($descriptor);
 

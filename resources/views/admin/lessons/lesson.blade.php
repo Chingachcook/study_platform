@@ -24,11 +24,11 @@
         <hr>
         <div class="row d-flex">
             <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">
-                <a title="Добавить Документ" class="btn btn-danger btn-block align-self-center btn-lesson" href="{{ url('/admin/documents')}}">Документ</a>
+                <a title="Добавить Документ" class="btn btn-danger btn-block align-self-center btn-lesson" href="{{ url('/admin/'.$id.'/documents')}}">Документ</a>
                 <span>&nbsp;&nbsp;&nbsp;</span>
-                <a title="Добавить Видео" class="btn btn-info btn-block align-self-center btn-lesson" href="{{ url('/admin/videos')}}">Видео</a>
+                <a title="Добавить Видео" class="btn btn-info btn-block align-self-center btn-lesson" href="{{ url('/admin/'.$id.'/videos')}}">Видео</a>
                 <span>&nbsp;&nbsp;&nbsp;</span>
-                <a title="Добавить Тест" class="btn btn-warning btn-block align-self-center btn-lesson" href="{{ url('/admin/tests')}}">Тест</a>
+                <a title="Добавить Тест" class="btn btn-warning btn-block align-self-center btn-lesson" href="{{ url('/admin/'.$id.'/tests')}}">Тест</a>
             </div>
         </div>
         <br>

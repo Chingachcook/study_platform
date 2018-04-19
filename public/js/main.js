@@ -14115,3 +14115,9 @@ function clearAnswers(){
     "one": "a",
     "two": "b"
   }
+
+
+	  $(".quest input").on("click", function() {
+		  $(".quest input").removeAttr("checked"); // Снимаем чекбокс со всей группы
+		  $(this).prop("checked", true); // Оставляем выбранный чекбокс
+	  });

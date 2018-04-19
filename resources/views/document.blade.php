@@ -68,9 +68,9 @@
 
 <section class="document">
     <div class="container">
-        <iframe src="https://docs.google.com/document/d/e/2PACX-1vTnM3kZKlNUcOd6Ggnm6xCDt0EykbDu7eIhP0X3G5oEqSPi8XXuLM2ZLfqo0IJ_FV9yuMx412kASimo/pub?embedded=true"
+        <iframe src="{{$document->document_path}}"
                 width="700" height="820" style="border: none;"></iframe>
-        <button type="submit" class="btn btn-warning"><a href="{{ url('/lesson/')}}">Назад</a></button>
+        <button type="submit" class="btn btn-warning"><a href="{{ url('/lesson/'.$document->lesson_id)}}">Назад</a></button>
     </div>
 </section>
 

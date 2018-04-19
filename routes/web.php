@@ -26,6 +26,10 @@ Route::get('/lesson/{id}', 'Admin\LessonsController@lesson_for_user');
 Route::get('/test/{id}', 'TestsController@test_for_user');
 Route::get('/video/{id}', 'VideosController@video_for_user');
 Route::get('/document/{id}', 'DocumentsController@docx_for_user');
+Route::post('/result/{id}', 'TestsController@result');
+Route::get('statistics_modules', 'TestsController@statistics');
+Route::get('statistics_module/{id}', 'TestsController@statistics_module');
+
 
 Route::get('/statistics', function () {
         return view('statistics');
@@ -70,6 +74,13 @@ Route::resource('admin/permissions', 'Admin\PermissionsController');
 Route::resource('admin/users', 'Admin\UsersController');
 
 Route::get('admin/lessons/create/{id}', 'Admin\LessonsController@create');
+
+Route::get('admin/tests/create/{id}', 'TestsController@create');
+Route::get('admin/{id}/tests', 'TestsController@index2');
+Route::get('admin/{id}/videos', 'VideosController@index2');
+Route::get('admin/videos/create/{id}', 'VideosController@create');
+Route::get('admin/{id}/documents', 'DocumentsController@index2');
+Route::get('admin/documents/create/{id}', 'DocumentsController@create');
 
 Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
 Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);

@@ -23,7 +23,7 @@
 
                         {!! Form::open(['url' => '/admin/documents', 'class' => 'form-horizontal', 'files' => 'true']) !!}
 
-                        @include ('admin.documents.form')
+                        @include ('admin.documents.form',['id' => $id])
 
                         {!! Form::close() !!}
 

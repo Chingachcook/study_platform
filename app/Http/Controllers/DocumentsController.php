@@ -24,12 +24,20 @@ class DocumentsController extends Controller
         return view('admin.documents.index', compact('documents'));
     }
 
-    public function create()
+    public function index2($id)
+    {
+        $less = Lesson::find($id);
+        $documents = $less->docx_child;
+        //$video = $videos[0];
+
+        return view('admin.documents.index', compact('documents','id'));
+    }
+
+    public function create($id)
     {
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
 
-        $module_id = 1;
-        return view('admin.documents.create',compact('module_id'));
+        return view('admin.documents.create',compact('id'));
     }
 
 
@@ -38,14 +46,14 @@ class DocumentsController extends Controller
         $this->validate($request, ['title' => 'required']);
 
 
-        $docName = $request->file('docx')->getClientOriginalName();
+       /* $docName = $request->file('docx')->getClientOriginalName();
         $path = base_path() . '/resources/assets/documents/';
         $request->file('docx')->move(
             $path, $docName
         );
+        $data['document_path'] = $path . $docName;*/
 
         $data = $request->all();
-        $data['document_path'] = $path . $docName;
         $document = Document::create($data);
 
         return redirect('admin/documents')->with('flash_message', 'Role added!');
@@ -125,7 +133,7 @@ class DocumentsController extends Controller
     {
         $less = Lesson::find($id);
         $documents = $less->docx_child;
-        $document = $documents[0]->document_path;
+        $document = $documents[0];
         return view('document', compact("document"));
     }
 

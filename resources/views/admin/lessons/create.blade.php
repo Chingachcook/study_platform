@@ -23,7 +23,7 @@
 
                         {!! Form::open(['url' => '/admin/lessons', 'class' => 'form-horizontal']) !!}
 
-                        @include ('admin.lessons.form')
+                        @include ('admin.lessons.form',['some_data' => $id_example])
 
                         {!! Form::close() !!}
 

@@ -23,7 +23,7 @@
 
                         {!! Form::open(['url' => '/admin/videos', 'class' => 'form-horizontal']) !!}
 
-                        @include ('admin.videos.form')
+                        @include ('admin.videos.form',['id' => $id])
 
                         {!! Form::close() !!}
 

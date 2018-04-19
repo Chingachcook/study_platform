@@ -24,12 +24,20 @@ class VideosController extends Controller
         return view('admin.videos.index', compact('videos'));
     }
 
-    public function create()
+    public function index2($id)
+    {
+        $less = Lesson::find($id);
+        $videos = $less->videos_child;
+        //$video = $videos[0];
+
+        return view('admin.videos.index', compact('videos','id'));
+    }
+
+    public function create($id)
     {
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
 
-        $module_id = 1;
-        return view('admin.videos.create',compact('module_id'));
+        return view('admin.videos.create',compact('id'));
     }
 
     public function store(Request $request)
@@ -114,7 +122,7 @@ class VideosController extends Controller
     {
         $less = Lesson::find($id);
         $videos = $less->videos_child;
-        $video = $videos[0]->video_path;
+        $video = $videos[0];
         return view('video', compact("video"));
     }
 }

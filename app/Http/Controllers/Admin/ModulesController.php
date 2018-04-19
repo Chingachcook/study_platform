@@ -82,7 +82,7 @@ class ModulesController extends Controller
             $lessons = Lesson::paginate($perPage);
         }
 
-        $module = Module::findOrFail($id);
+        $module = $id;
         $mod = Module::find($id);
         $lessons = $mod->lessons_child;
 
@@ -144,4 +144,6 @@ class ModulesController extends Controller
 
         return redirect('admin/modules')->with('flash_message', 'Role deleted!');
     }
+
+
 }

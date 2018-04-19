@@ -12,7 +12,7 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                @include('admin.lessons.lesson')
+                                @include('admin.lessons.lesson',['some_data' => $id])
                                 </tbody>
                             </table>
                         </div>

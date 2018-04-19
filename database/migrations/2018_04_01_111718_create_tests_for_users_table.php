@@ -15,9 +15,12 @@ class CreateTestsForUsersTable extends Migration
     {
         Schema::create('tests_for_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('test_admin_id');
+            $table->integer('test_admin_id')->unsigned();
+            $table->foreign('test_admin_id')->references('lesson_id')->on('questions');
+            $table->integer('module_id_test');
             $table->integer('result');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

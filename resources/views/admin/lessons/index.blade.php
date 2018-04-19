@@ -12,7 +12,7 @@
                         <a href="{{ url('/admin/modules') }}" class="btn btn-warning btn-sm" title="Назад к Модулям">
                             <i class="fa fa-home" aria-hidden="true"></i> Назад
                         </a>
-                        <a href="{{ url('/admin/lessons/create/') }}" class="btn btn-success btn-sm" title="Добавить Новый Урок">
+                        <a href="{{ url('/admin/lessons/create/'. $module ) }}" class="btn btn-success btn-sm" title="Добавить Новый Урок">
                             <i class="fa fa-plus" aria-hidden="true"></i> Добавить Урок
                         </a>
 

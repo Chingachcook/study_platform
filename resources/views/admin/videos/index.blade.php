@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Video</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/videos/create') }}" class="btn btn-success btn-sm" title="Add New Video">
+                        <a href="{{ url('/admin/videos/create/'.$id) }}" class="btn btn-success btn-sm" title="Add New Video">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 

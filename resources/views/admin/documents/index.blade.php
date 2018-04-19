@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Documents</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/documents/create') }}" class="btn btn-success btn-sm" title="Add New Document">
+                        <a href="{{ url('/admin/documents/create'.$id) }}" class="btn btn-success btn-sm" title="Add New Document">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 

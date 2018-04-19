@@ -12,7 +12,7 @@
                         <a href="{{ url('/admin/lessons') }}" class="btn btn-warning btn-sm" title="Назад к Уроку">
                             <i class="fa fa-home" aria-hidden="true"></i> Назад
                         </a>
-                        <a href="{{ url('/admin/tests/create') }}" class="btn btn-success btn-sm" title="Добавить Новый Вопрос">
+                        <a href="{{ url('/admin/tests/create/'.$id) }}" class="btn btn-success btn-sm" title="Добавить Новый Вопрос">
                             <i class="fa fa-plus" aria-hidden="true"></i> Добавить Вопрос
                         </a>
 
@@ -34,14 +34,16 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Вопрос</th><th>Ответы</th><th>Действия</th>
+                                        <th>ID</th><th>Вопросы</th><th></th><th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($tests as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td><a href="{{ url('/admin/tests', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->description }}</td>
+                                        <td><a href="{{ url('/admin/tests', $item->id) }}">{{ $item->title }}</a></td>
+
+                                        <td></td>
                                         <td>
                                             <a href="{{ url('/admin/tests/' . $item->id) }}" title="Посмотреть Тест"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
                                             <a href="{{ url('/admin/tests/' . $item->id . '/edit') }}" title="Изменить Тест"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>

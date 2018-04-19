@@ -7,58 +7,58 @@
 </div>
 <div class="col-md-12">
     <div class="form-group{{ $errors->has('title') ? ' has-error' : ''}}">
-        {!! Form::label('title', 'Ответ 1: ', ['class' => 'col-md-4 control-label']) !!}
+        {!! Form::label('answer1', 'Ответ 1: ', ['class' => 'col-md-4 control-label']) !!}
         <div class="col-md-6">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        {{ Form::radio('answer', 'answer_1') }}
+                        {{ Form::radio('right', '1') }}
                     </div>
                 </div>
-                {!! Form::text('title', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+                {!! Form::text('answer1', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                {!! $errors->first('answer1', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
     </div>
     <div class="form-group{{ $errors->has('title') ? ' has-error' : ''}}">
-        {!! Form::label('title', 'Ответ 2: ', ['class' => 'col-md-4 control-label']) !!}
+        {!! Form::label('answer2', 'Ответ 2: ', ['class' => 'col-md-4 control-label']) !!}
         <div class="col-md-6">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        {{ Form::radio('answer', 'answer_1') }}
+                        {{ Form::radio('right', '2') }}
                     </div>
                 </div>
-                {!! Form::text('title', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+                {!! Form::text('answer2', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                {!! $errors->first('answer2', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
     </div>
     <div class="form-group{{ $errors->has('title') ? ' has-error' : ''}}">
-        {!! Form::label('title', 'Ответ 3: ', ['class' => 'col-md-4 control-label']) !!}
+        {!! Form::label('answer3', 'Ответ 3: ', ['class' => 'col-md-4 control-label']) !!}
         <div class="col-md-6">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        {{ Form::radio('answer', 'answer_1') }}
+                        {{ Form::radio('right', '3') }}
                     </div>
                 </div>
-                {!! Form::text('title', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+                {!! Form::text('answer3', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                {!! $errors->first('answer3', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
     </div>
     <div class="form-group{{ $errors->has('title') ? ' has-error' : ''}}">
-        {!! Form::label('title', 'Ответ 4: ', ['class' => 'col-md-4 control-label']) !!}
+        {!! Form::label('answer4', 'Ответ 4: ', ['class' => 'col-md-4 control-label']) !!}
         <div class="col-md-6">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        {{ Form::radio('answer', 'answer_1') }}
+                        {{ Form::radio('right', '4') }}
                     </div>
                 </div>
-                {!! Form::text('title', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+                {!! Form::text('answer4', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                {!! $errors->first('answer4', '<p class="help-block">:message</p>') !!}
             </div>
         </div>
     </div>
@@ -66,10 +66,10 @@
 <div class="form-group{{ $errors->has('lesson_id') ? ' has-error' : ''}}">
     {!! Form::label('lesson_id', 'Урок: ', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('lesson_id', $module_id, ['class' => 'form-control']) !!}
+        {!! Form::text('lesson_id', $id, ['class' => 'form-control']) !!}
         {!! $errors->first('lesson_id', '<p class="help-block">:message</p>') !!}
     </div>
-</div>
+
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
         {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Создать', ['class' => 'btn btn-primary']) !!}
