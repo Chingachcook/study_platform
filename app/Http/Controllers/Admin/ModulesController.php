@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Module;
 use App\Lesson;
-use App\Permission;
 
 class ModulesController extends Controller
 {
