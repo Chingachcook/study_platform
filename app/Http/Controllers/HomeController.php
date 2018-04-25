@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Problem;
 use Illuminate\Http\Request;
 use App\Module;
 
@@ -31,8 +32,12 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $posts = Post::where('name', $request->keywords)->get();
+        $keyword = $request->get('search');
+        $problems = Problem::where('code', 'LIKE', "%$keyword%")->orWhere('title', 'LIKE', "%$keyword%")->paginate(15);;
+        foreach ($problems as $item)
+        {
+            dump($item->title);
 
-        return response()->json($posts);
+        }
     }
 }

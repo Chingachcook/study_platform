@@ -66,10 +66,16 @@
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
-                            <button class="btn btn-success my-2 my-sm-0" type="submit">Поиск</button>
-                        </form>
+                        {!! Form::open(['method' => 'GET', 'route'=>['search'], 'class' => 'form-inline my-2 my-lg-0 float-right', 'problem' => 'search'])  !!}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="Search...">
+                            <span class="input-group-append">
+                                <button class="btn btn-secondary" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        {!! Form::close() !!}
                     </ul>
                 </div>
             </div>
