@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Document;
 use Illuminate\Http\Request;
 use App\Lesson;
+use Session;
 
 class DocumentsController extends Controller
 {
@@ -127,11 +128,16 @@ class DocumentsController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id_doc)
     {
-        Document::destroy($id);
-
-        return redirect('admin/documents')->with('flash_message', 'Role deleted!');
+        $doc = Document::findOrFail($id_doc);
+        Document::destroy($id_doc);
+        $id = $doc->lesson_id ;
+        $less = Lesson::find($id);
+        $documents = $less->docx_child;
+        Session::flash('flash_message', 'deleted!');
+        return view('admin.documents.index',compact('documents','id'));
+       // return redirect('admin/documents')->with('flash_message', 'Role deleted!');
     }
 
     //Для User

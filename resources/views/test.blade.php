@@ -28,7 +28,7 @@
                 <div class="question">
                     <p><strong>Вопрос {{' '.$j++.': '}}</strong>{{ $item->title }}</p>
                     @foreach($item->answer_child as $answer)
-                    <label><input type="checkbox" name="{{$answer->question_id}}" id="{{$answer->id}}" value="{{ $answer->right }}" >{{ ' '. $answer->title }}</label>
+                    <label><input type="radio" name="{{$answer->question_id}}" id="{{$answer->id}}" value="{{ $answer->right }}" >{{ ' '. $answer->title }}</label>
                     @endforeach
                 </div>
             </div>

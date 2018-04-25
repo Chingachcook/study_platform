@@ -28,7 +28,8 @@
                             <p class="mb-1">{{$item->title}}</p>
                             <small>{{$item->description}}</small>
                         </a>
-                         @endforeach
+                        <a class="btn btn-outline-info btn-block" href="{{ url('/statistics_lesson/'.$item->id) }}" role="button">Статистика</a>
+                        @endforeach
                     </div>
                 </div>
             </div>

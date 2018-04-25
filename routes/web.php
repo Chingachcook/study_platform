@@ -29,6 +29,7 @@ Route::get('/document/{id}', 'DocumentsController@docx_for_user');
 Route::post('/result/{id}', 'TestsController@result');
 Route::get('statistics_modules', 'TestsController@statistics');
 Route::get('statistics_module/{id}', 'TestsController@statistics_module');
+Route::get('statistics_lesson/{id}', 'TestsController@statistics_lesson');
 
 
 Route::any('adminer', '\Miroc\LaravelAdminer\AdminerController@index');
@@ -56,6 +57,11 @@ Route::resource('admin/videos', 'VideosController');
 Route::resource('admin/permissions', 'Admin\PermissionsController');
 Route::resource('admin/users', 'Admin\UsersController');
 Route::resource('admin/statistics', 'Admin\StatisticsController');
+Route::resource('admin/problems', 'Admin\ProblemsController');
+
+Route::get('admin/statistics_module_user/{id}', 'Admin\StatisticsController@statistics_modules');
+Route::get('admin/statistics_lessons_user/{id}/{id_user}', 'Admin\StatisticsController@statistics_lessons');
+Route::get('admin/statistics_lesson_user/{id}/{id_user}', 'Admin\StatisticsController@statistics_lesson_user');
 
 Route::get('admin/lessons_list_admin_stat/{id}', 'Admin\StatisticsController@lessons_list_stat_admin');
 Route::get('admin/lesson_admin_stat/{id}', 'Admin\StatisticsController@lesson_stat_admin');

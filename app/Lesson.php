@@ -8,11 +8,6 @@ class Lesson extends Model
 {
     protected $fillable = ['id','title', 'description','module_id'];
 
-    public function tests_child()
-    {
-        return $this->hasMany('App\Test');
-    }
-
     public function questions_child()
     {
         return $this->hasMany('App\Question');

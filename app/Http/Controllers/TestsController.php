@@ -41,9 +41,6 @@ class TestsController extends Controller
 
     public function create($id)
     {
-        //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
-
-
         return view('admin.tests.create',compact('id'));
     }
 
@@ -108,7 +105,7 @@ class TestsController extends Controller
      */
     public function show($id)
     {
-        $test = Test::findOrFail($id);
+        $test = Question::findOrFail($id);
 
         return view('admin.tests.index2');
     }
@@ -122,10 +119,10 @@ class TestsController extends Controller
      */
     public function edit($id)
     {
-        $test = Test::findOrFail($id);
-        $id = $test->lesson_id ;
-
-        return view('admin.tests.edit',compact('test','id'));
+        $test = Question::findOrFail($id);
+        $id = $test->lesson_id;
+        $p = $test->answer_child;
+        return view('admin.tests.edit',compact('test','id','p'));
     }
 
     /**
@@ -140,13 +137,13 @@ class TestsController extends Controller
     {
         $this->validate($request, ['title' => 'required']);
 
-        $test = Test::findOrFail($id);
-        $test->update($request->all());
+        $test = Question::findOrFail($id);
 
         $id = $test->lesson_id ;
+        $test->update($request->all());
 
         $less = Lesson::find($id);
-        $tests = $less->tests_child;
+        $tests = $less->questions_child;
 
         return view('admin.tests.index',compact('tests','id'))->with('flash_message', 'updated!');
 
@@ -160,12 +157,26 @@ class TestsController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id_quest)
     {
-        Test::destroy($id);
+        $question = Question::findOrFail($id_quest);
+        $answer = Question::find($id_quest);
+        $answers = $answer->answer_child;
 
+        foreach ($answers as $item)
+        {
+            Answer::destroy($item->id);
+        }
+        $id = $question->lesson_id ;
+        $less = Lesson::find($id);
 
-        return redirect('admin/modules')->with('flash_message', 'Role deleted!');
+        TestsForUser::where('test_admin_id',$id)->delete();
+        Question::destroy($id_quest);
+
+        $tests = $less->questions_child;
+        //Session::flash('flash_message', 'updated!');
+        return view('admin.tests.index',compact('tests','id'));
+        //return redirect('admin/modules')->with('flash_message', 'Role deleted!');
     }
 
 
@@ -207,17 +218,27 @@ class TestsController extends Controller
 
     public function statistics_module($id_module)
     {
+        //$results = TestsForUser::all();
         $id = Auth::id();
         $user = User::find($id);
-        $results = $user->result_child;
+        $results = $user->result_child->where('module_id_test', $id_module);
         $i=1;
-        return view('statistics_test', compact('results','id_module','i'));
+        return view('statistics_module', compact('results','id_module','i'));
     }
 
     public function statistics()
     {
         $modules = Module::all();
         return view('statistics', compact('modules'));
+    }
+
+    public function statistics_lesson($id_lesson)
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        $results = $user->result_child->where('test_admin_id', $id_lesson);
+        $i=1;
+        return view('statistics_lesson', compact('results','id_lesson','i'));
     }
 
     public function test_txt($id)

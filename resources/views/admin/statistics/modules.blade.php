@@ -17,8 +17,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Модуль {{ $item->id }}</h4>
                                         <h5 class="card-subtitle mb-2 text-muted">{{ $item->title }}</h5>
-                                        <p class="card-text">{{ $item->description }}</p>
-                                        <a class="btn btn-outline-info btn-block" href="{{ url('/admin/lessons_list_admin_stat/'.$item->id) }}" role="button">Посмотреть</a>
+                                        <a class="btn btn-outline-info btn-block" href="{{ url('/admin/statistics_lessons_user/'.$item->id.'/'.$id) }}" role="button">Посмотреть</a>
                                     </div>
                                 </div>
                             </div>

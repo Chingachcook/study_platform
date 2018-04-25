@@ -17,6 +17,7 @@
     </nav>
 </div>
 <br>
+
 <section class="module">
     <div class="container">
         <h1>Модули для обучения</h1>
@@ -30,7 +31,8 @@
                         <h5 class="card-subtitle mb-2 text-muted">{{ $item->title }}</h5>
                         <p class="card-text">{{ $item->description }}</p>
                         <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list/'.$item->id) }}" role="button">Посмотреть</a>
-                    </div> 
+                        <a class="btn btn-outline-info btn-block" href="{{ url('/statistics_module/'.$item->id) }}" role="button">Статистика</a>
+                    </div>
                 </div>
             </div>
             @endforeach

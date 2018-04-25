@@ -28,4 +28,11 @@ class HomeController extends Controller
         $i = 1;
         return view('home2', compact('modules','i'));
     }
+
+    public function search(Request $request)
+    {
+        $posts = Post::where('name', $request->keywords)->get();
+
+        return response()->json($posts);
+    }
 }

@@ -1,6 +1,8 @@
 {"menus":[{"section":"Управление",
   "items":[{"title":"Пользователи","url":"\/admin\/users"},
     {"title":"Модули","url":"\/admin\/modules"},
-  {"title":"Статистика","url":"\/admin\/statistics"}]},
+    {"title":"Статистика по модулям","url":"\/admin\/statistics"},
+    {"title":"Проблемы","url":"\/admin\/problems"}
+  ]},
 {"section":"Tools","items":[{"title":"Generator","url":"\/admin\/generator"}]},
   {"section":"Modules","items":[]}]}

@@ -11,8 +11,10 @@ use App\User;
 
 class StatisticsController extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
+
         $modules = Module::all();
         return view('admin.statistics.index', compact('modules'));
     }
@@ -36,4 +38,28 @@ class StatisticsController extends Controller
         //dump($results);
         return view('admin.statistics.lesson_stat_admin', compact('results','id'));
     }
+
+
+    public function statistics_modules($id)
+    {
+        $modules = Module::all();
+        return view('admin.statistics.modules', compact('modules','id'));
+    }
+
+    public function statistics_lessons($id,$id_user)
+    {
+        $mod = Module::find($id);
+        $lessons = $mod->lessons_child;
+        return view('admin.statistics.lessons', compact('lessons','id_user'));
+    }
+
+    public function statistics_lesson_user($id,$id_user)
+    {
+
+        $user = User::find($id_user);
+        $results = $user->result_child->where('test_admin_id', $id);
+        $i=1;
+        return view('admin.statistics.stat_user_lesson', compact('results','id_lesson','i'));
+    }
+
 }

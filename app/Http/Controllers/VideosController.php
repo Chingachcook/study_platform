@@ -106,7 +106,7 @@ class VideosController extends Controller
         $videos = $less->videos_child;
 
 
-        return view('admin.videos',compact('videos','id'))->with('flash_message', 'updated!');
+        return view('admin.videos.index',compact('videos','id'))->with('flash_message', 'updated!');
 
         //return redirect('admin/videos')->with('flash_message', 'Role updated!');
     }
@@ -118,17 +118,15 @@ class VideosController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id_video)
     {
-        Video::destroy($id);
-
-        $video = Video::findOrFail($id);
+        $video = Video::findOrFail($id_video);
+        Video::destroy($id_video);
         $id = $video->lesson_id ;
-
         $less = Lesson::find($id);
         $videos = $less->videos_child;
 
-        return view('admin.videos',compact('videos','id'))->with('flash_message', 'updated!');
+        return view('admin.videos.index',compact('videos','id'))->with('flash_message', 'updated!');
 
         //return redirect('admin/videos')->with('flash_message', 'Role deleted!');
     }

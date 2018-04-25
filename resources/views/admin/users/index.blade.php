@@ -13,7 +13,7 @@
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
-                        {!! Form::open(['method' => 'GET', 'url' => '/admin/users', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
+                        {!! Form::open(['method' => 'GET', 'url' => '/admin/users', 'class' => 'form-inline my-2 my-lg-0 float-right', 'user' => 'search'])  !!}
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Search...">
                             <span class="input-group-append">
@@ -36,6 +36,7 @@
                                 <tbody>
                                 @foreach($users as $item)
                                     <tr>
+
                                         <td>{{ $item->id }}</td>
                                         <td><a href="{{ url('/admin/users', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->email }}</td>
                                         <td>
@@ -53,6 +54,9 @@
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/admin/statistics_module_user/' . $item->id) }}" title="Статистика пользователя"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Статистика</button></a>
                                         </td>
                                     </tr>
                                 @endforeach

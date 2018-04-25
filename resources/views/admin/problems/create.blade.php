@@ -7,9 +7,9 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Edit Test</div>
+                    <div class="card-header">Создать Модуль</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/'.$id.'/tests') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/problems') }}" title="Назад К Модулям"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
                         <br />
                         <br />
 
@@ -21,13 +21,9 @@
                             </ul>
                         @endif
 
-                        {!! Form::model($test, [
-                            'method' => 'PATCH',
-                            'url' => ['/admin/tests/'.$test->id],
-                            'class' => 'form-horizontal'
-                        ]) !!}
+                        {!! Form::open(['url' => '/admin/problems', 'class' => 'form-horizontal']) !!}
 
-                        @include ('admin.tests.form_edit',['submitButtonText' => 'Update'])
+                        @include ('admin.problems.form')
 
                         {!! Form::close() !!}
 

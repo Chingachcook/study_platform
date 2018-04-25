@@ -1,11 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.backend')
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            @include('admin.sidebar')
     <br>
-    <br>
-    <section class="module">
+            <div class="col-md-9">
+
+            <section class="module">
         <div class="container">
-            <h1>Ваша статистика </h1>
+            <h1>Статистика пользователя по уроку </h1>
             <div id="myfirstchart" style="height: 250px;"></div>
         </div>
     </section>
@@ -42,12 +46,11 @@
                 vAxis: {
                     title: 'Баллы',
                 },
+
                 'width':1000,
                 'height':400,
                 axes: {
-                    x: {
-                        0: {side: 'top'}
-                    }
+
                 }
             };
 
@@ -57,6 +60,7 @@
         }
         google.charts.setOnLoadCallback(drawChart);
     </script>
-
-
+        </div>
+    </div>
+    </div>
 @endsection
