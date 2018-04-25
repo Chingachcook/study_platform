@@ -11,7 +11,7 @@
     </section>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <br><br>
-    <div id="myfirstchart" style="margin: 10px;"></div>
+    <div id="myfirstchart"></div>
 
     <script>
         google.charts.load('current', {packages: ['corechart', 'line']});

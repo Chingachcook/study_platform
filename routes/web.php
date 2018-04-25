@@ -32,6 +32,8 @@ Route::get('statistics_modules', 'TestsController@statistics');
 Route::get('statistics_module/{id}', 'TestsController@statistics_module');
 Route::get('statistics_lesson/{id}', 'TestsController@statistics_lesson');
 
+Route::get('/search', 'HomeController@search')->name('search');
+
 
 Route::any('adminer', '\Miroc\LaravelAdminer\AdminerController@index');
 Route::any('adminer', '\Miroc\LaravelAdminer\AdminerAutologinController@index');
