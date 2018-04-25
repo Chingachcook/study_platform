@@ -8,11 +8,11 @@
 <div class="form-group{{ $errors->has('description') ? ' has-error' : ''}}">
     {!! Form::label('description', 'Описание: ', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::text('description', null, ['class' => 'form-control']) !!}
+        {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
         {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-<div class="form-group{{ $errors->has('module_id') ? ' has-error' : ''}}">
+<div style="display: none;" class="form-group{{ $errors->has('module_id') ? ' has-error' : ''}}">
     {!! Form::label('module_id', 'Модуль: ', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('module_id', $some_data, ['class' => 'form-control']) !!}

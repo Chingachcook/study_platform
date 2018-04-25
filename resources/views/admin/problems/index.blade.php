@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Problems</div>
+                    <div class="card-header">Проблемы</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/problems/create') }}" class="btn btn-success btn-sm" title="Add New Problem">
                             <i class="fa fa-plus" aria-hidden="true"></i> Добавить Проблему

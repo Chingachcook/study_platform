@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Создать Урок</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/lessons') }}" title="Назад К Урокам"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
+                        <a href="{{ url('/admin/modules') }}" title="Назад К Урокам"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
                         <br />
                         <br />
 

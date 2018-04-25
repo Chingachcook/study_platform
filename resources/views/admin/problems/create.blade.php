@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Создать Модуль</div>
+                    <div class="card-header">Создать Проблему</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/problems') }}" title="Назад К Модулям"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
                         <br />
