@@ -20,7 +20,7 @@ class ProblemsController extends Controller
 
         if (!empty($keyword)) {
             $problems = Problem::where('title', 'LIKE', "%$keyword%")->orWhere('description', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
+                ->orWhere('code', 'LIKE', "%$keyword%")->paginate($perPage);
         } else {
             $problems = Problem::paginate($perPage);
         }

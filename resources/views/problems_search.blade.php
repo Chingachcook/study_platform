@@ -7,20 +7,20 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Видео</div>
+                    <div class="card-header">Problem</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/admin/videos') }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/admin/videos/' . $video->id . '/edit') }}" title="Edit Video"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/admin/problems') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/problems/' . $problem->id . '/edit') }}" title="Edit Problem"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                         {!! Form::open([
                             'method' => 'DELETE',
-                            'url' => ['/admin/videos', $video->id],
+                            'url' => ['/admin/problems', $problem->id],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-sm',
-                                    'title' => 'Delete Video',
+                                    'title' => 'Delete problem',
                                     'onclick'=>'return confirm("Confirm delete?")'
                             ))!!}
                         {!! Form::close() !!}
@@ -31,12 +31,12 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID.</th> <th>Name</th><th>Label</th>
+                                        <th>ID.</th> <th>Name</th><th>Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{ $video->id }}</td> <td> {{ $video->title }} </td><td> {{ $video->video_path }} </td>
+                                        <td>{{ $problem->id }}</td> <td> {{ $problem->title }} </td><td> {{ $problem->code }} </td><td> {{ $problem->description }} </td>
                                     </tr>
                                 </tbody>
                             </table>

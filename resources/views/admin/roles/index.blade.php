@@ -31,7 +31,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Name</th><th>Label</th><th>Actions</th>
+                                        <th>ID</th><th>Name</th><th>Label</th><th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>

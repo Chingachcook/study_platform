@@ -10,12 +10,12 @@
                     <div class="card-header">Problems</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/problems/create') }}" class="btn btn-success btn-sm" title="Add New Problem">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Добавить Проблему
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/problems', 'class' => 'form-inline my-2 my-lg-0 float-right', 'problem' => 'search'])  !!}
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Search...">
+                            <input type="text" class="form-control" name="search" placeholder="Поиск...">
                             <span class="input-group-append">
                                 <button class="btn btn-secondary" type="submit">
                                     <i class="fa fa-search"></i>
@@ -39,14 +39,14 @@
                                         <td>{{ $item->id }}</td>
                                         <td><a href="{{ url('/admin/problems', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->code }}</td><td>{{ $item->description }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/problems/' . $item->id) }}" title="View Problem"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/problems/' . $item->id . '/edit') }}" title="Edit Problem"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/problems/' . $item->id) }}" title="View Problem"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Посмотреть</button></a>
+                                            <a href="{{ url('/admin/problems/' . $item->id . '/edit') }}" title="Edit Problem"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Редактировать</button></a>
                                             {!! Form::open([
                                                 'method' => 'DELETE',
                                                 'url' => ['/admin/problems', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Удалить', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-sm',
                                                         'title' => 'Delete Problem',

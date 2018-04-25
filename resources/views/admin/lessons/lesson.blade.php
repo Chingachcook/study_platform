@@ -18,7 +18,7 @@
 <section class="lesson">
     <div class="container">
         <br>
-        <a href="{{ url('/admin/modules/') }}" class="btn btn-warning btn-sm" title="Назад к Урокам">
+        <a href="{{ url('/admin/modules/'.$id) }}" class="btn btn-warning btn-sm" title="Назад к Урокам">
             <i class="fa fa-home" aria-hidden="true"></i> Назад
         </a>
         <hr>

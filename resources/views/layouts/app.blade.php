@@ -29,7 +29,6 @@
                         <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ url('/login') }}">Войти</a></li>
-                            <li><a class="nav-link" href="{{ url('/register') }}">Зарегистироватся</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,16 +59,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/statistics_modules') }}">Статистика</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/settings') }}">Настройки</a>
-                        </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        {!! Form::open(['method' => 'GET', 'url' => '/problems', 'class' => 'form-inline my-2 my-lg-0 float-right', 'problem' => 'search'])  !!}
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
-                            <button class="btn btn-success my-2 my-sm-0" type="submit">Поиск</button>
+                            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Поиск" aria-label="Search">
+                            <span class="input-group-append">
+                                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Поиск</button>
+                            </span>
                         </form>
+                        {!! Form::close() !!}
                     </ul>
                 </div>
             </div>

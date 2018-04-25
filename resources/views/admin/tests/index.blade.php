@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Тест</div>
                     <div class="card-body">
-
+                        <a href="{{ url('/admin/lessons/'.$id) }}" title="Назад к Тесту"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
                         <a href="{{ url('/admin/tests/create/'.$id) }}" class="btn btn-success btn-sm" title="Добавить Новый Вопрос">
                             <i class="fa fa-plus" aria-hidden="true"></i> Добавить Вопрос
                         </a>

@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Edit Lesson</div>
+                    <div class="card-header">Редактировать Урок</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/lessons') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
@@ -27,7 +27,7 @@
                             'class' => 'form-horizontal'
                         ]) !!}
 
-                        @include ('admin.lessons.form', ['some_data' => $module_id],['submitButtonText' => 'Update'])
+                        @include ('admin.lessons.form', ['some_data' => $module_id],['submitButtonText' => 'Обновить'])
 
                         {!! Form::close() !!}
 
