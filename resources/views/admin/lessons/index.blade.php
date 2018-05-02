@@ -41,7 +41,7 @@
                                 <?php $i=1 ?>
                                 @foreach($lessons as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $i++ }}</td>
                                         <td><a href="{{ url('/admin/lessons', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->description }}</td>
                                         <td>
                                             <a href="{{ url('/admin/lessons/' . $item->id) }}" title="Посмотреть Урок"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>

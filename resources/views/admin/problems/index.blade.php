@@ -34,9 +34,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i=0; ?>
                                 @foreach($problems as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $i++ }}</td>
                                         <td><a href="{{ url('/admin/problems', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->code }}</td><td>{{ $item->description }}</td>
                                         <td>
                                             <a href="{{ url('/admin/problems/' . $item->id) }}" title="View Problem"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Посмотреть</button></a>
