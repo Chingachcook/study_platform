@@ -10,8 +10,8 @@
                     <div class="card-header">Урок</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/admin/lessons') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> </button></a>
-                        <a href="{{ url('/admin/lessons/' . $lesson->id . '/edit') }}" title="Edit Урок"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
+                        <a href="{{ url('/admin/lessons') }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> </button></a>
+                        <a href="{{ url('/admin/lessons/' . $lesson->id . '/edit') }}" title="Изменить Урок"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
                         {!! Form::open([
                             'method' => 'DELETE',
                             'url' => ['/admin/lessons', $lesson->id],

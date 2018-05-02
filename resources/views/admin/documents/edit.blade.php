@@ -7,11 +7,11 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Редактировать Document</div>
+                    <div class="card-header">Редактировать Документ</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/'.$id.'/documents') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
-                        <br />
-                        <br />
+                        <a href="{{ url('/admin/'.$id.'/documents') }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
+                        <br/>
+                        <br/>
 
                         @if ($errors->any())
                             <ul class="alert alert-danger">

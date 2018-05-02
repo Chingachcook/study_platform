@@ -64,8 +64,8 @@
     </div>
 </div>
 <div class="form-group{{ $errors->has('lesson_id') ? ' has-error' : ''}}">
-    {!! Form::label('lesson_id', 'Урок: ', ['class' => 'col-md-4 control-label']) !!}
-    <div class="col-md-6">
+    <div class="col-md-6" style="display: none;">
+        {!! Form::label('lesson_id', 'Урок: ', ['class' => 'col-md-4 control-label']) !!}
         {!! Form::text('lesson_id', $id, ['class' => 'form-control']) !!}
         {!! $errors->first('lesson_id', '<p class="help-block">:message</p>') !!}
     </div>

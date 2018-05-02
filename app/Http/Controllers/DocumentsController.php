@@ -9,11 +9,6 @@ use Session;
 
 class DocumentsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index(Request $request)
     {
         $keyword = $request->get('search');
@@ -40,6 +35,7 @@ class DocumentsController extends Controller
 
     public function create($id)
     {
+        $this->middleware('auth:admin');
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
 
         return view('admin.documents.create',compact('id'));
@@ -120,9 +116,9 @@ class DocumentsController extends Controller
         $less = Lesson::find($id);
         $documents = $less->docx_child;
 
-        return view('admin.documents.index',compact('documents','id'))->with('flash_message', 'updated!');
+        return view('admin.documents.index', compact('documents','id'))->with('flash_message', 'Документ Обновлен!');
 
-        //return redirect('admin/documents')->with('flash_message', 'Role updated!');
+        //return redirect('admin/documents/'.$id)->with('flash_message', 'Документ Обновлен!');
     }
 
     /**
@@ -139,7 +135,7 @@ class DocumentsController extends Controller
         $id = $doc->lesson_id ;
         $less = Lesson::find($id);
         $documents = $less->docx_child;
-        Session::flash('flash_message', 'deleted!');
+        Session::flash('flash_message', 'Документ Удален!');
         return view('admin.documents.index',compact('documents','id'));
        // return redirect('admin/documents')->with('flash_message', 'Role deleted!');
     }

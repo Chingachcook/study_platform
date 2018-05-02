@@ -69,7 +69,7 @@
         {!! Form::text('lesson_id', $id, ['class' => 'form-control']) !!}
         {!! $errors->first('lesson_id', '<p class="help-block">:message</p>') !!}
     </div>
-
+</div>
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
         {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Создать', ['class' => 'btn btn-primary']) !!}

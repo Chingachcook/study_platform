@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Answer;
+use App\Document;
+use App\Question;
+use App\TestsForUser;
+use App\Video;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Module;
@@ -54,7 +59,7 @@ class ModulesController extends Controller
                // $permission = Permission::whereName($permission_name)->first();
                 //$module->givePermissionTo($permission);
 
-        return redirect('admin/modules')->with('flash_message', 'Role added!');
+        return redirect('admin/modules')->with('flash_message', 'Модуль Добавлен!');
     }
 
     /**
@@ -119,7 +124,7 @@ class ModulesController extends Controller
         $module = Module::findOrFail($id);
         $module->update($request->all());
 
-        return redirect('admin/modules')->with('flash_message', 'updated!');
+        return redirect('admin/modules')->with('flash_message', 'Модуль Обновлен!');
     }
 
     /**
@@ -129,11 +134,11 @@ class ModulesController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id_module)
     {
-        Module::destroy($id);
+        Module::destroy($id_module);
 
-        return redirect('admin/modules')->with('flash_message', 'deleted!');
+        return redirect('admin/modules')->with('flash_message', 'Модуль Удален!');
     }
 
 

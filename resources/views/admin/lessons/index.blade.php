@@ -38,6 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i=1 ?>
                                 @foreach($lessons as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>

@@ -6,7 +6,7 @@
 
 <section class="test">
     <div class="container">
-        <h6 class="display-4">Тест {{ $id }}</h6>
+        <h6 class="display-4">Тест</h6>
         <form class="form-test" method="post" name="form" style="padding: 20px" action={{url('/result/'.$id)}}>
             {{ csrf_field() }}
             @foreach($tests as $item)

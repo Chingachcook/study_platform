@@ -15,13 +15,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TestsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index(Request $request)
     {
+        $this->middleware('auth:admin');
+
         $keyword = $request->get('search');
         $perPage = 15;
 
@@ -37,6 +34,8 @@ class TestsController extends Controller
 
     public function index2($id)
     {
+        $this->middleware('auth:admin');
+
         $less = Lesson::find($id);
         $tests = $less->questions_child;
 
@@ -45,11 +44,15 @@ class TestsController extends Controller
 
     public function create($id)
     {
+        $this->middleware('auth:admin');
+
         return view('admin.tests.create',compact('id'));
     }
 
     public function store(Request $request)
     {
+        $this->middleware('auth:admin');
+
         $this->validate($request, ['title' => 'required']);
         /*
         $testName = $request->file('test')->getClientOriginalName();
@@ -109,6 +112,8 @@ class TestsController extends Controller
      */
     public function show($id)
     {
+        $this->middleware('auth:admin');
+
         $test = Question::findOrFail($id);
 
         return view('admin.tests.index2');
@@ -123,6 +128,8 @@ class TestsController extends Controller
      */
     public function edit($id)
     {
+        $this->middleware('auth:admin');
+
         $test = Question::findOrFail($id);
         $id = $test->lesson_id;
         $p = $test->answer_child;
@@ -139,6 +146,8 @@ class TestsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->middleware('auth:admin');
+
         $this->validate($request, ['title' => 'required']);
 
         $test = Question::findOrFail($id);
@@ -149,7 +158,7 @@ class TestsController extends Controller
         $less = Lesson::find($id);
         $tests = $less->questions_child;
 
-        return view('admin.tests.index',compact('tests','id'))->with('flash_message', 'updated!');
+        return view('admin.tests.index',compact('tests','id'))->with('flash_message', 'Тест Обновлен!');
 
         //return redirect('admin/tests')->with('flash_message', 'Role updated!');
     }
@@ -163,6 +172,8 @@ class TestsController extends Controller
      */
     public function destroy($id_quest)
     {
+        $this->middleware('auth:admin');
+
         $question = Question::findOrFail($id_quest);
         $answer = Question::find($id_quest);
         $answers = $answer->answer_child;
@@ -171,22 +182,20 @@ class TestsController extends Controller
         {
             Answer::destroy($item->id);
         }
-        $id = $question->lesson_id ;
-        $less = Lesson::find($id);
+        $id = $question->lesson_id;
 
-        TestsForUser::where('test_admin_id',$id)->delete();
+        TestsForUser::where('test_admin_id', $id)->delete();
         Question::destroy($id_quest);
 
-        $tests = $less->questions_child;
-        //Session::flash('flash_message', 'updated!');
-        return view('admin.tests.index',compact('tests','id'));
-        //return redirect('admin/modules')->with('flash_message', 'Role deleted!');
+        return redirect('admin/'.$id.'/tests')->with('flash_message', 'Вопрос с Ответами Удален!');
     }
 
 
     //Для User
     public function test_for_user($id)
     {
+        $this->middleware('auth');
+
         $less = Lesson::find($id);
         $tests = $less->questions_child;
 
@@ -197,6 +206,8 @@ class TestsController extends Controller
 
     public function result($id)
     {
+        $this->middleware('auth');
+
         $less = Lesson::find($id);
         $tests = $less->questions_child;
         $module_id = $less->module_id;;
@@ -222,6 +233,8 @@ class TestsController extends Controller
 
     public function statistics_module($id_module)
     {
+        $this->middleware('auth');
+
         //$results = TestsForUser::all();
         $id = Auth::id();
         $user = User::find($id);
@@ -232,12 +245,16 @@ class TestsController extends Controller
 
     public function statistics()
     {
+        $this->middleware('auth');
+
         $modules = Module::all();
         return view('statistics', compact('modules'));
     }
 
     public function statistics_lesson($id_lesson)
     {
+        $this->middleware('auth');
+
         $id = Auth::id();
         $user = User::find($id);
         $results = $user->result_child->where('test_admin_id', $id_lesson);
@@ -247,6 +264,8 @@ class TestsController extends Controller
 
     public function test_txt($id)
     {
+        $this->middleware('auth');
+
         $less = Lesson::find($id);
         $tests = $less->tests_child;
         $path = $tests[0]->test_path;
