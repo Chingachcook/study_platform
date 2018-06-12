@@ -3,41 +3,60 @@
 @section('content')
     <br>
     <br>
-
-    <section class="module_list">
+    <section class="module">
         <div class="container">
-            <h1>Статистика уроков по первому модулю</h1>
-            <br>
-            <div class="row align-items-stretch">
-                <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">
-                    <div class="list-group">
-                        <a href="statistics_test.blade.php" class="list-group-item list-group-item-action flex-column align-items-start active">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small>3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small>Donec id elit non mi porta.</small>
-                        </a>
-                        <a href="statistics_test.blade.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                        </a>
-                        <a href="statistics_test.blade.php" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <h1>Cтатистика </h1>
+            <div id="myfirstchart" style="height: 250px;"></div>
         </div>
     </section>
-    @endsection
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <br><br>
+    <div id="myfirstchart"></div>
+
+    <script>
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Уроки');
+            data.addColumn('number', 'Урок');
+
+            data.addRows([
+                <?php
+                foreach ($results as $item)
+                    echo ' [\''.$item->created_at.'\', '.$item->result.', ], '
+                ?>
+
+            ]);
+
+            // Set chart options
+            var options = {
+                chart: {
+                    title: 'Статистика по уроку',
+                },
+                hAxis: {
+                    title: 'Количество',
+                },
+                vAxis: {
+                    title: 'Баллы',
+                },
+                'width':1000,
+                'height':400,
+                axes: {
+                    x: {
+                        0: {side: 'top'}
+                    }
+                }
+            };
+
+            // Instantiate and draw the chart.
+            var chart = new google.charts.Line(document.getElementById('myfirstchart'));
+            chart.draw(data, options);
+        }
+        google.charts.setOnLoadCallback(drawChart);
+    </script>
+
+
+@endsection

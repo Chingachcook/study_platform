@@ -7,9 +7,9 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Edit Video</div>
+                    <div class="card-header">Редактировать Видео</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/'.$id.'/videos') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/'.$id.'/videos') }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
                         <br />
                         <br />
 
@@ -27,7 +27,7 @@
                             'class' => 'form-horizontal'
                         ]) !!}
 
-                        @include ('admin.videos.form', ['id' => $id],['submitButtonText' => 'Update'])
+                        @include ('admin.videos.form', ['id' => $id],['submitButtonText' => 'Обновить'])
 
                         {!! Form::close() !!}
 

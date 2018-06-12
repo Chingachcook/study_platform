@@ -8,9 +8,10 @@ use App\Video;
 
 class VideosController extends Controller
 {
-
     public function index(Request $request)
     {
+        $this->middleware('auth:admin');
+
         $keyword = $request->get('search');
         $perPage = 15;
 
@@ -26,6 +27,8 @@ class VideosController extends Controller
 
     public function index2($id)
     {
+        $this->middleware('auth:admin');
+
         $less = Lesson::find($id);
         $videos = $less->videos_child;
         //$video = $videos[0];
@@ -35,6 +38,8 @@ class VideosController extends Controller
 
     public function create($id)
     {
+        $this->middleware('auth:admin');
+
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
 
         return view('admin.videos.create',compact('id'));
@@ -42,6 +47,8 @@ class VideosController extends Controller
 
     public function store(Request $request)
     {
+        $this->middleware('auth:admin');
+
         $this->validate($request, ['title' => 'required']);
         $data = $request->all();
         Video::create($data);
@@ -65,6 +72,8 @@ class VideosController extends Controller
      */
     public function show($id)
     {
+        $this->middleware('auth:admin');
+
         $video = Video::findOrFail($id);
 
         return view('admin.videos.index2');
@@ -79,6 +88,8 @@ class VideosController extends Controller
      */
     public function edit($id)
     {
+        $this->middleware('auth:admin');
+
         $video = Video::findOrFail($id);
         //$permissions = Permission::select('id', 'title', 'description')->get()->pluck('description', 'title');
         $id = $video->lesson_id ;
@@ -95,6 +106,8 @@ class VideosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->middleware('auth:admin');
+
         $this->validate($request, ['title' => 'required']);
 
         $video = Video::findOrFail($id);
@@ -106,7 +119,7 @@ class VideosController extends Controller
         $videos = $less->videos_child;
 
 
-        return view('admin.videos',compact('videos','id'))->with('flash_message', 'updated!');
+        return view('admin.videos.index',compact('videos','id'))->with('flash_message', 'Видео Обновлено!');
 
         //return redirect('admin/videos')->with('flash_message', 'Role updated!');
     }
@@ -118,17 +131,17 @@ class VideosController extends Controller
      *
      * @return void
      */
-    public function destroy($id)
+    public function destroy($id_video)
     {
-        Video::destroy($id);
+        $this->middleware('auth:admin');
 
-        $video = Video::findOrFail($id);
+        $video = Video::findOrFail($id_video);
+        Video::destroy($id_video);
         $id = $video->lesson_id ;
-
         $less = Lesson::find($id);
         $videos = $less->videos_child;
 
-        return view('admin.videos',compact('videos','id'))->with('flash_message', 'updated!');
+        return view('admin.videos.index',compact('videos','id'))->with('flash_message', 'Видео Удалено!');
 
         //return redirect('admin/videos')->with('flash_message', 'Role deleted!');
     }
@@ -136,9 +149,18 @@ class VideosController extends Controller
     //Для User
     public function video_for_user($id)
     {
+        $this->middleware('auth');
+
         $less = Lesson::find($id);
         $videos = $less->videos_child;
-        $video = $videos[0];
-        return view('video', compact("video"));
+
+        if (isset($videos[0]->video_path)) {
+            $video = $videos[0];
+        } else {
+            $video = NULL;
+            $lesson_path = $id;
+        }
+
+        return view('video', compact("video", "lesson_path"));
     }
 }

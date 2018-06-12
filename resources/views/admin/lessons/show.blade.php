@@ -7,11 +7,11 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Lesson</div>
+                    <div class="card-header">Урок</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/admin/lessons') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> </button></a>
-                        <a href="{{ url('/admin/lessons/' . $lesson->id . '/edit') }}" title="Edit Lesson"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
+                        <a href="{{ url('/admin/lessons') }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> </button></a>
+                        <a href="{{ url('/admin/lessons/' . $lesson->id . '/edit') }}" title="Изменить Урок"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
                         {!! Form::open([
                             'method' => 'DELETE',
                             'url' => ['/admin/lessons', $lesson->id],
@@ -20,7 +20,7 @@
                             {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-sm',
-                                    'title' => 'Delete Lesson',
+                                    'title' => 'Delete Урок',
                                     'onclick'=>'return confirm("Confirm delete?")'
                             ))!!}
                         {!! Form::close() !!}

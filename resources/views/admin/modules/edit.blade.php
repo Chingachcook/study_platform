@@ -7,11 +7,11 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Edit Module</div>
+                    <div class="card-header">Редактировать Модуль</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/modules') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <br />
-                        <br />
+                        <a href="{{ url('/admin/modules') }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
+                        <br/>
+                        <br/>
 
                         @if ($errors->any())
                             <ul class="alert alert-danger">
@@ -27,7 +27,7 @@
                             'class' => 'form-horizontal'
                         ]) !!}
 
-                        @include ('admin.modules.form', ['submitButtonText' => 'Update'])
+                        @include ('admin.modules.form', ['submitButtonText' => 'Обновить'])
 
                         {!! Form::close() !!}
 

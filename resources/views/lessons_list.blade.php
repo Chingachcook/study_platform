@@ -3,34 +3,35 @@
 @section('content')
 
     <br>
-    <br>
     <section class="module_list">
         <div class="container">
             <h1>Список уроков по модулю</h1>
             <br>
-            <div class="row align-items-stretch">
-                <div class="col-lg-3 col-md-4 d-flex justify-content-center">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-8 col-sm-12 d-flex justify-content-center">
-                    <div class="list-group">
-                        @foreach($lessons as $item)
-                        <a href="{{ url('/lesson/'.$item->id) }}" class="list-group-item list-group-item-action flex-column align-items-start active">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Урок {{$i++}}  </h5>
+            <div class="row d-flex flex-row">
+                @foreach($lessons as $item)
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+                        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Урок {{$i++}}</div>
+                            <div class="card-body">
+                                <p class="text-dark p-2">{{$item->title}}
+                                <p class="text-dark mt-auto p-2">{{$item->description}}</p>
+                                <a class="btn btn-info btn-block mt-auto p-2"
+                                   href="{{ url('/document/'.$item->id) }}" role="button" style="margin-bottom: 7px;">Документ {{ $i-1 }}
+                                    Урока</a>
+                                <a class="btn btn-info btn-block mt-auto p-2"
+                                   href="{{ url('/video/' . $item->id) }}" role="button" style="margin-bottom: 7px;">Видео {{ $i-1 }}
+                                    Урока</a>
+                                <a class="btn btn-info btn-block mt-auto p-2"
+                                   href="{{ url('/test/' . $item->id) }}" role="button"
+                                   style="margin-bottom: 7px;">Тест {{ $i-1 }} урока</a>
+                                <a class="btn btn-danger btn-block mt-auto p-2"
+                                   href="{{ url('/statistics_lesson/'.$item->id) }}" role="button">Статистика {{ $i-1 }}
+                                    Урока</a>
                             </div>
-                            <p class="mb-1">{{$item->title}}</p>
-                            <small>{{$item->description}}</small>
-                        </a>
-                         @endforeach
+                        </div>
+                        <br>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

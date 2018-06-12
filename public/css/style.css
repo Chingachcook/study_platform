@@ -12,7 +12,7 @@
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'Roboto Slab', serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -30,7 +30,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Roboto Slab', serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -138,7 +138,7 @@ a {
 
 a:hover {
     color: #0056b3;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:not([href]):not([tabindex]) {
@@ -5297,7 +5297,7 @@ fieldset[disabled] a.btn {
 
 .btn-link:hover {
     color: #0056b3;
-    text-decoration: underline;
+    text-decoration: none;
     background-color: transparent;
     border-color: transparent;
 }
@@ -7140,8 +7140,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #03a9f4;
-    border-color: #03a9f4;
+    background-color: #28a745;
+    border-color: #218838;
 }
 
 .list-group-flush .list-group-item {
@@ -7410,10 +7410,6 @@ html, body {
     background-color: #fff;
 }
 
-.bg-blue {
-    background-color: #007ac1;
-}
-
 html, body {
     background-color: #e9ecef;
 }
@@ -7524,7 +7520,9 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #007ac1;
+    background-image: url("http://www.twitrcovers.com/wp-content/uploads/2012/11/Gaussian-Blur-l.jpg");
+    -webkit-background-size: 100%;
+    background-size: 100%;
 }
 
 .home {
@@ -7547,6 +7545,7 @@ html, body {
 .content {
     height: 100%;
     padding: 40px;
+    border-radius: 10%;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -7561,17 +7560,14 @@ html, body {
 }
 
 .logo {
-    width: 90px;
-    height: 90px;
-    line-height: 2.2;
-    border-radius: 50%;
-    margin: 0 auto;
-    border: 3px solid #868e96;
-    color: #868e96;
-    -ms-flex-pack: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    padding: 2px;
+    line-height:2.2;
+    border-radius:50%;
+    margin:0 auto;
+    color:#323230;
+    -ms-flex-pack:center;
+    justify-content:center;
+    margin-bottom:20px;
+    padding:2px;
 }
 
 .logo h1 {
@@ -7584,17 +7580,23 @@ html, body {
 }
 
 input[type=text],
-input[type=password] {
+input[type=email],
+input[type=password],
+input[type=password_confirmation]{
     background: 0 0;
     border: 0;
     box-shadow: none;
     border-bottom: 1px solid #adb5bd;
     border-radius: 0;
+    text-align: center;
 }
 
 input[type=text],
-input[type=password]:focus {
+input[type=email],
+input[type=password],
+input[type=password_confirmation]:focus {
     box-shadow: none !important;
+    text-align: center;
 }
 
 .input-group-addon {
@@ -7603,12 +7605,6 @@ input[type=password]:focus {
     border: 0;
     color: #adb5bd;
     border-radius: 0.3em 0 0 0.3em;
-}
-
-.btn-danger {
-    border: 0;
-    background: #ff3355;
-    border-radius: 30px;
 }
 
 .btn-padding {

@@ -1,91 +1,90 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <title>JS Программирование</title>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #007ac1;
-                color: #fff;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- Styles -->
+    <style>
+        html, body {
+            background-image: url("http://test.stapp.kz/js_background.jpg");
+            background-size: 100%;
+            color: #fff;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+        }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        .full-height {
+            height: 100vh;
+        }
 
-            .position-ref {
-                position: relative;
-            }
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        .position-ref {
+            position: relative;
+        }
 
-            .content {
-                text-align: center;
-            }
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
 
-            .title {
-                font-size: 84px;
-            }
+        .content {
+            text-align: center;
+            padding: 0 100px;
+        }
 
-            .links > a {
-                color: #fff;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        .title {
+            font-size: 84px;
+        }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Главная</a>
-                    @else
-                        <a href="{{ route('login') }}">Войти</a>
-                        <!--<a href="{{ route('register') }}">Register</a>-->
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Study Platform
-                </div>
-                <p>
-                    @component('components.who')
-                        @endcomponent
-                </p>
-            </div>
+        p {
+            font-size: 23px;
+        }
+    </style>
+</head>
+<body>
+<div class="flex-center position-ref full-height">
+    @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+                <br>
+                <a class="btn btn-outline-light" href="{{ url('/login') }}"
+                   style="border-radius: 20px; vertical-align: baseline; float: right; margin-right: 50px;">Войти</a>
+            @else
+                <a class="btn btn-outline-light" href="{{ url('/register') }}"
+                   style="border-radius: 20px; vertical-align: baseline; float: right; margin-right: 50px;">Регистрация</a>
+                <a class="btn btn-outline-light" href="{{ url('/login') }}"
+                   style="border-radius: 20px; vertical-align: baseline; float: right; margin-right: 20px;">Войти</a>
+            @endauth
         </div>
-    </body>
+    @endif
+
+    <div class="container">
+        <div class="title text-center">
+            JS СОЗДАНИЕ 2D ИГР
+            <p>
+                Эта платформа создана для обучения программированию,
+                на основе создания динамических компьютерных игр
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+
 </html>

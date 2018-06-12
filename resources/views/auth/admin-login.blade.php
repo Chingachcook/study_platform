@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_login')
 
 @section('content')
 <!--<div class="container">
@@ -67,20 +67,18 @@
     </div>
 </div>-->
 <div class="login-form">
+    <br>
+    <a class="btn btn-outline-light" href="{{ url('/') }}"
+       style="border-radius: 20px; vertical-align: baseline; float: right; margin-right: 50px;">Главная</a>
     <div class="home">
         <div class="item">
             <div class="content">
                 <form method="POST" action="{{ route('admin.login.submit') }}" class="form-horizontal">
                     @csrf
                     <div class="logo">
-                        <h1>A</h1>
+                        <h1>ADMIN</h1>
                     </div>
                     <div class="input-group lg">
-                        <div class="input-group-prepend">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-user-circle"></i>
-                                </span>
-                        </div>
                         <input id="email" type="email"
                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                name="email" placeholder="Логин" aria-label="email"
@@ -88,11 +86,6 @@
                                autofocus>
                     </div>
                     <div class="input-group lg">
-                        <div class="input-group-prepend">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-lock"></i>
-                                </span>
-                        </div>
                         <input id="password" type="password"
                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                placeholder="Пароль" aria-label="Password"
@@ -114,7 +107,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-block btn-padding">Войти</button>
+                        <button type="submit" class="btn btn-outline-success btn-block btn-padding">Войти</button>
                     </div>
                 </form>
             </div>

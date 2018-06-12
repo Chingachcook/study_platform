@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Answer;
 use App\Lessons;
+use App\Question;
+use App\TestsForUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Lesson;
@@ -100,9 +103,7 @@ class LessonsController extends Controller
         $mod = Module::find($module);
         $lessons = $mod->lessons_child;
 
-        return view('admin.lessons',compact('module','lessons'))->with('flash_message', 'updated!');
-
-        //return redirect('admin/lessons')->with('flash_message', 'Role updated!');
+        return view('admin.lessons.index', compact('module','lessons'))->with('flash_message', 'Урок Обновлен!');
     }
 
     public function destroy($id)
@@ -113,6 +114,29 @@ class LessonsController extends Controller
         $module = $lessons->module_id;
         $mod = Module::find($module);
         $lessons = $mod->lessons_child;
+
+        /*$questions = Question::where('lesson_id', $id)->get();
+
+        if (isset($questions)) {
+            foreach ($questions as $question) {
+                $answers = $question->answer_child;
+            }
+        }
+
+        if (isset($answers)) {
+            foreach ($answers as $answer) {
+                //Answer::destroy($answer->id);
+                echo "<pre>";
+                print_r($answer);
+                echo "</pre>";
+            }
+        }*/
+
+
+        /*echo "<pre>";
+        print_r($questions);
+        echo "</pre>";
+        die();*/
 
         return view('admin.lessons',compact('module','lessons'))->with('flash_message', 'updated!');
 

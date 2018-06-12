@@ -7,6 +7,11 @@ use App\Module;
 use App\Lesson;
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //Для User
     public function lessons_list_for_user($id)
     {

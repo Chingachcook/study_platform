@@ -1,41 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<br>
-<br>
-<div class="container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                <a href="#">Library</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
-        </ol>
-    </nav>
-</div>
-<br>
-<section class="module">
-    <div class="container">
-        <h1>Модули для обучения</h1>
-        <br>
-        <div class="row d-flex align-items-stretch">
-            @foreach($modules as $item)
-            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-body">
-                        <h4 class="card-title">Модуль {{ $i++ }}</h4>
-                        <h5 class="card-subtitle mb-2 text-muted">{{ $item->title }}</h5>
-                        <p class="card-text">{{ $item->description }}</p>
-                        <a class="btn btn-outline-info btn-block" href="{{ url('/lessons_list/'.$item->id) }}" role="button">Посмотреть</a>
-                    </div> 
-                </div>
+    <br>
+    <br>
+
+    <section class="module">
+        <div class="container">
+            <h1>Модули для обучения JS</h1>
+            <br>
+            <div class="row d-flex flex-row">
+                <?php $i = 1; ?>
+                @foreach($modules as $item)
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
+                        <div class="card" style="width: 20rem;">
+                            <div class="card-header bg-dark text-white">
+                                <h5 class="card-title p-2">{{ $item->title }}</h5>
+                            </div>
+                            <div class="card-body d-flex align-items-start flex-column">
+                                <p class="card-text mb-auto p-2">{{ $item->description }}</p>
+                                <a class="btn btn-success btn-block p-2"
+                                   href="{{ url('/lessons_list/'.$item->id) }}" role="button">Уроки <?php echo $i; ?>
+                                    модуля</a>
+                                <a class="btn btn-info btn-block p-2"
+                                   href="{{ url('/statistics_module/'.$item->id) }}"
+                                   role="button">Статистика <?php echo $i; ?> модуля</a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $i++; ?>
+                @endforeach
             </div>
-            @endforeach
+            <br>
         </div>
-        <br>
-    </div>
-</section>
+    </section>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_login')
 
 @section('content')
 <div class="container">
@@ -70,6 +70,73 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="login-form">
+    <br>
+    <a class="btn btn-outline-light" href="{{ url('/login') }}"
+       style="border-radius: 20px; vertical-align: baseline; float: right; margin-right: 50px;">Войти</a>
+    <div class="home">
+        <div class="item">
+            <div class="content">
+                <form method="POST" action="{{ route('register') }}" class="form-horizontal">
+                    @csrf
+                    <div class="logo">
+                        <h1>Регистрация</h1>
+                    </div>
+                    <div class="input-group lg">
+                        <input id="name" type="text"
+                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                               name="name" placeholder="Имя" aria-label="name"
+                               aria-describedby="basic-addon1" value="{{ old('name') }}" required
+                               autofocus>
+                        @if ($errors->has('name'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="input-group lg">
+                        <input id="email" type="email"
+                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                               name="email" placeholder="Email" aria-label="email"
+                               aria-describedby="basic-addon1" value="{{ old('email') }}" required
+                               autofocus>
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="input-group lg">
+                        <input id="password" type="password"
+                               class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                               placeholder="Пароль" aria-label="Password"
+                               aria-describedby="basic-addon1" name="password" required>
+                    </div>
+                    <div class="input-group lg">
+                        <input id="password-confirm" type="password" class="form-control"
+                               placeholder="Подтвердите Пароль" name="password_confirmation" required>
+                    </div>
+                    <div class="input-group mb-2 lg mx-auto">
+                        @if ($errors->has('email'))
+                            <?php $style="display: inline-block;"?>
+                            <span class="invalid-feedback" style="<?php echo $style?>">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                        @if ($errors->has('password'))
+                            <span class="invalid-feedback" style="<?php echo $style?>">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-success btn-block btn-padding">Зарегистрироваться</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

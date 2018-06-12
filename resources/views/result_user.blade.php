@@ -3,11 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 
     <!-- Useful meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,22 +21,45 @@
     <meta name="google" content="notranslate">
     <meta name="format-detection" content="telephone=no">
 
-    <title>Главная</title>
+    <title>Результат теста</title>
 </head>
 
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-blue">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="">{{ Auth::user()->name }}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li><a class="nav-link" href="{{ url('/login') }}">Войти</a></li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('/home') }}">
+                                    Главная
+                                </a>
+                                <a class="dropdown-item" href="{{ url('/user/logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Выйти
+                                </a>
+
+                                <form id="logout-form" action="{{ url('/user/logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/home') }}">Модули
                             <span class="sr-only">(current)</span>
@@ -42,14 +68,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/statistics_modules') }}">Статистика</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="settings.html">Настройки</a>
-                    </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
-                    <button class="btn btn-success my-2 my-sm-0" type="submit">Поиск</button>
-                </form>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    {!! Form::open(['method' => 'GET', 'url' => '/problems', 'class' => 'form-inline my-2 my-lg-0 float-right', 'problem' => 'search'])  !!}
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Поиск" aria-label="Search">
+                        <span class="input-group-append">
+                                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Поиск</button>
+                            </span>
+                    </form>
+                    {!! Form::close() !!}
+                </ul>
             </div>
         </div>
     </nav>
@@ -79,6 +109,7 @@
 </script>
 <!-- JS -->
 <script src="js/main.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 

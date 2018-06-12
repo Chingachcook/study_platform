@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Тест</div>
                     <div class="card-body">
-
+                        <a href="{{ url('/admin/lessons/'.$id) }}" title="Назад"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад</button></a>
                         <a href="{{ url('/admin/tests/create/'.$id) }}" class="btn btn-success btn-sm" title="Добавить Новый Вопрос">
                             <i class="fa fa-plus" aria-hidden="true"></i> Добавить Вопрос
                         </a>
@@ -36,14 +36,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i=1 ?>
                                 @foreach($tests as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td><a href="{{ url('/admin/tests', $item->id) }}">{{ $item->title }}</a></td>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $item->title }}</td>
 
                                         <td></td>
                                         <td>
-                                            <a href="{{ url('/admin/tests/' . $item->id) }}" title="Посмотреть Тест"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
                                             <a href="{{ url('/admin/tests/' . $item->id . '/edit') }}" title="Изменить Тест"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </button></a>
                                             {!! Form::open([
                                                 'method' => 'DELETE',

@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateModulesLessonsTable extends Migration
 {
     /**
@@ -19,7 +17,6 @@ class CreateModulesLessonsTable extends Migration
             $table->string('description');
             $table->timestamps();
         });
-
         Schema::create('lessons', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
@@ -28,7 +25,6 @@ class CreateModulesLessonsTable extends Migration
             $table->foreign('module_id')->references('id')->on('modules');
             $table->timestamps();
         });
-
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
@@ -37,7 +33,6 @@ class CreateModulesLessonsTable extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons');
             $table->timestamps();
         });
-
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
@@ -46,7 +41,6 @@ class CreateModulesLessonsTable extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons');
             $table->timestamps();
         });
-
         Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
@@ -55,7 +49,6 @@ class CreateModulesLessonsTable extends Migration
             $table->foreign('lesson_id')->references('id')->on('lessons');
             $table->timestamps();
         });
-
         Schema::create('tests_for_users', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('test_admin_id');
@@ -65,7 +58,6 @@ class CreateModulesLessonsTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -79,6 +71,5 @@ class CreateModulesLessonsTable extends Migration
         Schema::dropIfExists('videos');
         Schema::dropIfExists('tests');
         Schema::dropIfExists('tests_for_users');
-
     }
 }
